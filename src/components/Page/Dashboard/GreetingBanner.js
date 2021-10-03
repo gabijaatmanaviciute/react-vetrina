@@ -28,7 +28,6 @@ const useStyles = makeStyles({
     alignContent: "center",
     position: "relative",
     height: "11.375rem",
-    top: "3.75rem",
     background:
       "linear-gradient(180deg, #21B8F9 0%, rgba(33, 184, 249, 0) 132.05%)",
     padding: "2.5rem 2.3125rem",

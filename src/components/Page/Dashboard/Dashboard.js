@@ -10,7 +10,7 @@ const Dashboard = () => {
   const classes = useStyles();
 
   return (
-    <Grid item container direction="column">
+    <Grid item container direction="column" className={classes.page}>
       <Grid item>
         <Header />
       </Grid>
@@ -33,4 +33,6 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  
+});

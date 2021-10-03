@@ -22,9 +22,6 @@ export default PageHeader;
 
 const useStyles = makeStyles({
   header: {
-    position: "absolute",
-    left: "0",
-    top: "0",
     height: "3.75rem",
     background: "#FFFFFF",
     boxShadow: "none",
