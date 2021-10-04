@@ -2,7 +2,6 @@ import PageHeaderNotification from "./PageHeaderNotification";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
 const PageHeader = () => {
@@ -11,7 +10,7 @@ const PageHeader = () => {
   return (
     <AppBar position="static" className={classes.header}>
       <Toolbar>
-        <Typography className={classes.toolbarTitle}>Dashboard</Typography>
+        <Typography className={classes.toolbarTitle} variant="h5">Dashboard</Typography>
         <PageHeaderNotification className={classes.headerNotification} />
       </Toolbar>
     </AppBar>
@@ -20,23 +19,16 @@ const PageHeader = () => {
 
 export default PageHeader;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   header: {
-    height: "3.75rem",
-    background: "#FFFFFF",
+    background: theme.palette.background.default,
     boxShadow: "none",
     padding: "0 1rem"
   },
   toolbarTitle: {
     flex: 1,
-    fontFamily: "Noto Sans HK",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "1.0625rem",
-    lineHeight: "1.375rem",
-    color: "#103B66",
   },
   headerNotification: {
     color: "#103B66",
   },
-});
+}));
