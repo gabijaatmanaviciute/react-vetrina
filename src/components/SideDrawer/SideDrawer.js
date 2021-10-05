@@ -14,7 +14,7 @@ import { extraListItems } from "./../../data-layer/menu-data";
 import { storeList } from "./../../data-layer/menu-data";
 import { ReactComponent as HomeIcon } from "assets/icons/home-icon.svg";
 
-const drawerWidth = 255;
+const drawerWidth = 256;
 
 const SideDrawer = () => {
   const [showMenu, setShowMenu] = useState(true);

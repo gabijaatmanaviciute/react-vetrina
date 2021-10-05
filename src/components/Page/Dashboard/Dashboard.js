@@ -3,6 +3,7 @@ import SidePanel from "./SidePanel";
 import Header from "../PageHeader";
 import GreetingBanner from "./GreetingBanner";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 
 import { makeStyles } from "@material-ui/core";
 
@@ -14,6 +15,7 @@ const Dashboard = () => {
       <Grid item>
         <Header />
       </Grid>
+      <Divider className={classes.headerDivider} />
       <Grid item container>
         <Grid item xs={12}>
           <GreetingBanner />
@@ -34,5 +36,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 const useStyles = makeStyles({
-  
+  headerDivider: {
+    background: "rgba(0, 0, 0, 0.24)",
+  }
 });

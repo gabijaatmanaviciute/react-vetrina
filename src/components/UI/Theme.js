@@ -17,8 +17,8 @@ export default createTheme({
   props: {
     // Name of the component
     MuiButtonBase: {
-      disableRipple: true 
-    }
+      disableRipple: true,
+    },
   },
   palette: {
     common: {
@@ -38,20 +38,24 @@ export default createTheme({
     secondary: {
       main: `${red}`,
     },
+    text: {
+      primary: "#103B66",
+    },
     background: {
       paper: `${white}`,
       default: `${white}`,
       secondaryList: `${lightBlue}`,
       lightGrey: `${lightGrey}`,
-      hoverGrey: `${hoverGrey}`
+      hoverGrey: `${hoverGrey}`,
     },
+    divider: "rgba(0, 0, 0, 0.32)",
   },
   shape: {
     borderRadius: 5,
   },
   mixins: {
     toolbar: {
-      minHeight: "3.75rem",
+      minHeight: "3.74rem",
       "@media (min-width:600px)": {
         minHeight: "3.75rem",
       },
@@ -60,48 +64,47 @@ export default createTheme({
   typography: {
     fontFamily: "Noto Sans HK",
     fontSize: 16,
-    color: `${black}`,
     h1: {
       fontFamily: "Noto Sans HK",
       fontSize: "2.125rem",
       fontWeight: 500,
       lineHeight: "2.4375rem",
-      color: `${black}`,
+
     },
     h2: {
       fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "1.75rem",
       lineHeight: "2rem",
-      color: `${black}`,
+
     },
     h3: {
       fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "1.375rem",
       lineHeight: "1.6875rem",
-      color: `${black}`,
+
     },
     h4: {
       fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "1.25rem",
       lineHeight: "1.5625rem",
-      color: `${black}`,
+
     },
     h5: {
       fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "1.0625rem",
       lineHeight: "1.375rem",
-      color: `${black}`,
+
     },
     h6: {
       fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "0.9375rem",
       lineHeight: "1.25rem",
-      color: `${black}`,
+
     },
     bodyMedium: {
       fontWeight: 500,
@@ -124,15 +127,14 @@ export default createTheme({
       fontWeight: 400,
       fontSize: "0.875rem",
       lineHeight: "1.125rem",
-      color: `${black}`,
+
     },
     label: {
       fontFamily: "Source Sans Pro",
       fontWeight: 500,
       fontSize: "0.9375rem",
       lineHeight: "1.25rem",
-      color: `${black}`,
+
     },
-    
   },
 });
