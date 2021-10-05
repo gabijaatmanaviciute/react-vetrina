@@ -2,59 +2,61 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import Box from "@material-ui/core/Box";
 import { ReactComponent as ExternalLinkIcon } from "./../../../assets/icons/external-link-icon.svg";
 
 const GreetingBanner = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.greetingBanner}>
-      <Typography className={classes.greetingText}>Welcome Mario!</Typography>
-      <Typography className={classes.greetingLink}>
-        <Link className={classes.linkText}>app.vetrinalive.it/fenoh-store</Link>
+    <Box className={classes.greetingBanner}>
+      <Typography className={classes.greetingText} variant="h1">
+        Welcome Mario!
+      </Typography>
+      <Box className={classes.greetingLink}>
+        <Link className={classes.linkText} variant="h5">
+          app.vetrinalive.it/fenoh-store
+        </Link>
         <SvgIcon className={classes.linkIcon}>
           <ExternalLinkIcon />
         </SvgIcon>
-      </Typography>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
 export default GreetingBanner;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   greetingBanner: {
     display: "flex",
-    alignContent: "center",
+    alignItems: "center",
     position: "relative",
     height: "11.375rem",
     background:
       "linear-gradient(180deg, #21B8F9 0%, rgba(33, 184, 249, 0) 132.05%)",
-    padding: "2.5rem 2.3125rem",
+    padding: "0 2.3125rem 3.9375rem",
   },
   greetingText: {
     flex: 1,
     fontFamily: "Source Sans Pro",
-    fontStyle: "normal",
     fontWeight: 600,
-    fontSize: "2.125rem",
-    lineHeight: "2.4375rem",
-    color: "#FFFFFF",
+    color: theme.palette.common.white,
   },
   greetingLink: {
     display: "flex",
-    color: "#FFFFFF",
+    alignItems: "end",
+    color: theme.palette.common.white,
   },
   linkText: {
-    color: "#FFFFFF",
-    fontFamily: "Noto Sans HK",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "1.0625rem",
-    lineHeight: "1.375rem",
-    textDecoration: "underline"
+    color: theme.palette.common.white,
+    textDecoration: "underline",
+    fontWeight: 500
   },
   linkIcon: {
-    color: "#FFFFFF",
+    marginLeft: "1rem",
+    marginRight: "1px",
+    width: "1.5rem",
+    height: "1.5rem",
   },
-});
+}));
