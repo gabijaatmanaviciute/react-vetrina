@@ -32,7 +32,5 @@ const useSyles = makeStyles(theme => ({
     fontFamily: "Source Sans Pro",
     fontWeight: 400,
   },
-  iconRoot: {
-    textAlign: "center",
-  },
+ 
 }));

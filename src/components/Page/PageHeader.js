@@ -9,7 +9,7 @@ const PageHeader = () => {
 
   return (
     <AppBar position="static" className={classes.header}>
-      <Toolbar>
+      <Toolbar disableGutters className={classes.toolbar}>
         <Typography className={classes.toolbarTitle} variant="h5">Dashboard</Typography>
         <PageHeaderNotification className={classes.headerNotification} />
       </Toolbar>
@@ -23,12 +23,13 @@ const useStyles = makeStyles(theme => ({
   header: {
     background: theme.palette.background.default,
     boxShadow: "none",
-    padding: "0 1rem"
+    padding: "0 2.3125rem",
+    color: theme.palette.text.primary,
+    height: "3.6875rem"
   },
   toolbarTitle: {
     flex: 1,
   },
   headerNotification: {
-    color: "#103B66",
   },
 }));
