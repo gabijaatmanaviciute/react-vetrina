@@ -120,6 +120,7 @@ export default createTheme({
       fontWeight: 600,
       fontSize: "0.875rem",
       lineHeight: "1.25rem",
+      textTransform: "none"
     },
     input: {
       fontFamily: "Source Sans Pro",
