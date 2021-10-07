@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { ReactComponent as ListIcon } from "assets/icons/list-icon.svg";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDownRounded";
+import CardTitle from "../PanelCardParts/CardTitle";
+import CardLink from "../PanelCardParts/CardLink";
 
 function Orders() {
   const classes = useStyles();
@@ -11,10 +13,7 @@ function Orders() {
   return (
     <Grid container direction="column">
       <Grid item className={classes.panelHeader}>
-        <div className={classes.panelTitle}>
-          <ListIcon className={classes.panelIcon} />
-          <Typography variant="h4">Orders</Typography>
-        </div>
+        <CardTitle title="Orders" icon={<ListIcon />} />
         <div className={classes.dropdown}>
           <Typography variant="input">This month</Typography>
           <KeyboardArrowDownIcon />
@@ -35,7 +34,7 @@ function Orders() {
         </Grid>
       </Grid>
       <Grid item className={classes.panelFooter}>
-        <Typography>10 free tips to increase your sales</Typography>
+        <CardLink linkText="10 free tips to increase your sales" />
       </Grid>
     </Grid>
   );
@@ -44,15 +43,6 @@ function Orders() {
 export default Orders;
 
 const useStyles = makeStyles((theme) => ({
-  panelIcon: {
-    width: "1.25rem",
-    height: "1.25rem",
-    marginRight: "1rem",
-  },
-  panelTitle: {
-    display: "flex",
-    alignItems: "center",
-  },
   panelHeader: {
     display: "flex",
     justifyContent: "space-between",
@@ -69,13 +59,5 @@ const useStyles = makeStyles((theme) => ({
   statLabel: {
     fontWeight: 400,
     color: "#6C7C8C",
-  },
-  panelFooter: {
-    marginTop: "0.3125rem",
-    display: "flex",
-    justifyContent: "space-between",
-    "& .MuiTypography-body1": {
-      ...theme.typography.panelLinks,
-    },
   },
 }));
