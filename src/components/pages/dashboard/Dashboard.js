@@ -1,6 +1,6 @@
 import MainPanel from "./MainPanel";
 import SidePanel from "./SidePanel";
-import PageHeader from "components/reusable_components/layout/page_header/PageHeader";
+import PageHeader from "components/layout/page_header/PageHeader";
 import GreetingBanner from "./GreetingBanner";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
