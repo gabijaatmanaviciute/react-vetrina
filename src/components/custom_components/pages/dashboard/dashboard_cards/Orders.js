@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { ReactComponent as ListIcon } from "assets/icons/list-icon.svg";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDownRounded";
-import CardTitle from "../PanelCardParts/CardTitle";
-import CardLink from "../PanelCardParts/CardLink";
+import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
+import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 
 function Orders() {
   const classes = useStyles();

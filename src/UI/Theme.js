@@ -19,12 +19,12 @@ export default createTheme({
     borderRadius: "10px",
     padding: "1.5rem",
   },
-  props: {
-    // Name of the component
-    MuiButtonBase: {
-      disableRipple: true,
-    },
-  },
+  // props: {
+  //   // Name of the component
+  //   MuiButtonBase: {
+  //     disableRipple: true,
+  //   },
+  // },
   palette: {
     common: {
       white: `${white}`,

@@ -2,11 +2,11 @@ import { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core";
-import Visitors from "./PanelCards/Visitors";
-import Orders from "./PanelCards/Orders";
-import AppAd from "./PanelCards/AppAd";
-import ExtensionsMarketplace from "./PanelCards/ExtensionsMarketplace";
-import LatestNews from "./PanelCards/LatestNews";
+import Visitors from "./dashboard_cards/Visitors";
+import Orders from "./dashboard_cards/Orders";
+import AppAd from "./dashboard_cards/AppAd";
+import ExtensionsMarketplace from "./dashboard_cards/ExtensionsMarketplace";
+import LatestNews from "./dashboard_cards/LatestNews";
 
 const MainPanel = () => {
   const classes = useStyles();

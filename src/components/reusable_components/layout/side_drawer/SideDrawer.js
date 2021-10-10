@@ -7,11 +7,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import DrawerHeader from "./DrawerHeader";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 
-import { mainListItems } from "./../../data-layer/menu-data";
-import { extraListItems } from "./../../data-layer/menu-data";
-import { storeList } from "./../../data-layer/menu-data";
+import { mainListItems } from "utils/menu-data";
+import { extraListItems } from "utils/menu-data";
+import { storeList } from "utils/menu-data";
 import { ReactComponent as HomeIcon } from "assets/icons/home-icon.svg";
 
 const drawerWidth = 256;

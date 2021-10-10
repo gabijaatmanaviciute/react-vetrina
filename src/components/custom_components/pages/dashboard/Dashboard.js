@@ -1,6 +1,6 @@
 import MainPanel from "./MainPanel";
 import SidePanel from "./SidePanel";
-import Header from "../PageHeader";
+import PageHeader from "components/reusable_components/layout/page_header/PageHeader";
 import GreetingBanner from "./GreetingBanner";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <Grid item container direction="column" className={classes.page}>
       <Grid item>
-        <Header />
+        <PageHeader />
       </Grid>
       <Divider className={classes.headerDivider} />
       <Grid item container>

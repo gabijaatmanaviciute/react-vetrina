@@ -1,8 +1,8 @@
 import React from "react";
 import TrustPilotLogo from "assets/logo/trustpilot-logo.svg";
-import CardContent from "../PanelCardParts/CardContent";
+import CardContent from "components/reusable_components/panel_card_parts/CardContent";
 import { makeStyles, Typography } from "@material-ui/core";
-import CardLink from "../PanelCardParts/CardLink";
+import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 
 function Trustpilot() {

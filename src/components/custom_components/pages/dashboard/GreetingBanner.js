@@ -3,7 +3,7 @@ import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Box from "@material-ui/core/Box";
-import { ReactComponent as ExternalLinkIcon } from "./../../../assets/icons/external-link-icon.svg";
+import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon.svg";
 
 const GreetingBanner = () => {
   const classes = useStyles();

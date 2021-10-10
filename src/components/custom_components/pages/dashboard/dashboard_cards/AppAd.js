@@ -6,7 +6,7 @@ import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import Iphone12 from "assets/iPhone_12.svg";
 import AppStore from "assets/app_store.svg";
 import GooglePlay from "assets/google_play.svg";
-import CardLink from "../PanelCardParts/CardLink";
+import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 
 function AppAd() {
   const classes = useStyles();

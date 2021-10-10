@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { ReactComponent as ToolIcon } from "assets/icons/tool-icon.svg";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
-import CardTitle from "../PanelCardParts/CardTitle";
-import CardLink from "../PanelCardParts/CardLink";
-import CardContent from "../PanelCardParts/CardContent";
+import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
+import CardLink from "components/reusable_components/panel_card_parts/CardLink";
+import CardContent from "components/reusable_components/panel_card_parts/CardContent";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 

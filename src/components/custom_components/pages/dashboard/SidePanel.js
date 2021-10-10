@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
-import CustomerSupport from "./PanelCards/CustomerSupport";
-import InviteFriend from "./PanelCards/InviteFriend";
-import ConfigureYourShop from "./PanelCards/ConfigureYourShop";
-import TrustPilot from "./PanelCards/Trustpilot";
+import CustomerSupport from "./dashboard_cards/CustomerSupport";
+import InviteFriend from "./dashboard_cards/InviteFriend";
+import ConfigureYourShop from "./dashboard_cards/ConfigureYourShop";
+import TrustPilot from "./dashboard_cards/Trustpilot";
 
 
 const SidePanel = () => {

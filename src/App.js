@@ -1,5 +1,5 @@
-import Dashboard from "./Page/Dashboard/Dashboard";
-import SideDrawer from "./SideDrawer/SideDrawer";
+import Dashboard from "components/custom_components/pages/dashboard/Dashboard";
+import SideDrawer from "components/reusable_components/layout/side_drawer/SideDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./UI/Theme";
