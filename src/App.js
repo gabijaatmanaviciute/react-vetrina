@@ -1,18 +1,15 @@
+import Layout from "./components/layout/Layout";
 import Dashboard from "components/pages/dashboard/Dashboard";
-import SideDrawer from "components/layout/side_drawer/SideDrawer";
-import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./UI/Theme";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
-  const classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className={classes.root}>
-          <SideDrawer />
+          <Layout>
           <Switch>
             <Route exact path="/" component={() => <Dashboard />} />
             <Route exact path="/catalogue" component={() => <div>Catalogue</div>} />
@@ -31,7 +28,7 @@ function App() {
             <Route exact path="/share_your_shop" component={() => <div>Share your shop</div>} />
             <Route exact path="/view_your_shop" component={() => <div>View your shop</div>} />
           </Switch>
-        </div>
+          </Layout>
       </Router>
     </ThemeProvider>
   );
@@ -39,8 +36,3 @@ function App() {
 
 export default App;
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
-});
