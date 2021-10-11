@@ -12,16 +12,14 @@ function App() {
           <Layout>
           <Switch>
             <Route exact path="/" component={() => <Dashboard />} />
-            <Route exact path="/catalogue" component={() => <div>Catalogue</div>} />
             <Route exact path="/orders" component={() => <div>Orders</div>} />
             <Route exact path="/customers" component={() => <div>Customers</div>} />
-            <Route exact path="/marketing" component={() => <div>Marketing</div>} />
             <Route exact path="/delivery_options" component={() => <div>Delivery Options</div>} />
             <Route exact path="/payment_options" component={() => <div>Payment Options</div>} />
             <Route exact path="/store_design" component={() => <div>Store Design</div>} />
             <Route exact path="/subscription" component={() => <div>Subscription</div>} />
             <Route exact path="/integrations" component={() => <div>Integrations</div>} />
-            <Route exact path="/extentions" component={() => <div>Extentions</div>} />
+            <Route exact path="/extensions" component={() => <div>Extensions</div>} />
             <Route exact path="/settings" component={() => <div>Settings</div>} />
             <Route exact path="/log_out" component={() => <div>Log out</div>} />
             <Route exact path="/customer_support" component={() => <div>Customer support</div>} />
