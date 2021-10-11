@@ -15,7 +15,8 @@ const hoverGrey = "#F7F7F7";
 
 export default createTheme({
   panelCard: {
-    boxShadow: "0px 4px 8px 0px rgba(50, 50, 71, 0.06),0px 4px 4px 0px rgba(50, 50, 71, 0.08)",
+    boxShadow:
+      "0px 4px 8px 0px rgba(50, 50, 71, 0.06),0px 4px 4px 0px rgba(50, 50, 71, 0.08)",
     borderRadius: "10px",
     padding: "1.5rem",
   },
@@ -120,7 +121,7 @@ export default createTheme({
       fontWeight: 600,
       fontSize: "0.875rem",
       lineHeight: "1.25rem",
-      textTransform: "none"
+      textTransform: "none",
     },
     input: {
       fontFamily: "Source Sans Pro",
@@ -134,13 +135,19 @@ export default createTheme({
       fontSize: "0.9375rem",
       lineHeight: "1.25rem",
     },
+    drawerListItemText: {
+      fontFamily: "Noto Sans HK",
+      fontWeight: 400,
+      fontSize: "0.875rem",
+      lineHeight: "1rem",
+    },
     panelLinks: {
       fontFamily: "Source Sans Pro",
       fontWeight: 400,
       fontSize: "1.0625rem",
       lineHeight: "1.25rem",
       color: `${blue}`,
-      textDecoration: "underline"
-    }
+      textDecoration: "underline",
+    },
   },
 });
