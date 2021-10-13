@@ -67,7 +67,7 @@ export default createTheme({
   },
   mixins: {
     toolbar: {
-      minHeight: "3.74rem",
+      minHeight: "3.75rem",
       "@media (min-width:600px)": {
         minHeight: "3.75rem",
       },

@@ -3,14 +3,23 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
+import { openedDrawerWidth } from "utils/global-constants";
+import { closedDrawerWidth } from "utils/global-constants";
+import clsx from "clsx";
 
-const PageHeader = ({drawerOpen}) => {
+const PageHeader = ({ drawerOpen }) => {
   const classes = useStyles();
-
   return (
-    <AppBar position="static" className={classes.header} drawerOpen={drawerOpen}>
+    <AppBar
+      className={clsx(classes.header, {
+        [classes.drawerOpened]: drawerOpen,
+        [classes.drawerClosed]: !drawerOpen,
+      })}
+    >
       <Toolbar disableGutters className={classes.toolbar}>
-        <Typography className={classes.toolbarTitle} variant="h5">Dashboard</Typography>
+        <Typography className={classes.toolbarTitle} variant="h5">
+          Dashboard
+        </Typography>
         <PageHeaderNotification className={classes.headerNotification} />
       </Toolbar>
     </AppBar>
@@ -19,7 +28,7 @@ const PageHeader = ({drawerOpen}) => {
 
 export default PageHeader;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     background: theme.palette.background.default,
     boxShadow: "none",
@@ -27,9 +36,21 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     height: "3.6875rem",
   },
-  toolbar: {
-
+  drawerClosed: {
+    width: `calc(100% - ${closedDrawerWidth}px)`,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }), 
   },
+  drawerOpened: {
+    width: `calc(100% - ${openedDrawerWidth}px)`,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  toolbar: {},
   toolbarTitle: {
     flex: 1,
   },

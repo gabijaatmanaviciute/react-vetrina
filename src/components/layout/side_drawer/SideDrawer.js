@@ -8,8 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { mainListItems } from "utils/menu-data";
 import { extraListItems } from "utils/menu-data";
 import clsx from "clsx";
-
-const drawerWidth = 256;
+import { openedDrawerWidth } from "utils/global-constants";
+import { closedDrawerWidth } from "utils/global-constants";
 
 const SideDrawer = ({menuIconClickHandler, drawerOpen}) => {
   const classes = useStyles();
@@ -50,12 +50,12 @@ export default SideDrawer;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    width: drawerWidth,
+    width: openedDrawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
-    width: drawerWidth,
+    width: openedDrawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
+    }), 
     overflowX: 'hidden',
-    width: theme.spacing(7),
+    width: closedDrawerWidth,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(8) + 2,
     },
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   menuList: {
     padding: 0,
     margin: "0.1875rem 0 1rem",
-    maxWidth: drawerWidth,
+    maxWidth: openedDrawerWidth,
   },
   extraList: {
     marginTop: "1.375rem",

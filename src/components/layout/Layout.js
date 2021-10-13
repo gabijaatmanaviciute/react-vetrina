@@ -15,8 +15,10 @@ function Layout({ children }) {
 
   return (
     <div className={classes.layout}>
-      <SideDrawer menuIconClickHandler={menuIconClickHandler} drawerOpen={drawerOpen}/>
+
+      <SideDrawer menuIconClickHandler={menuIconClickHandler} drawerOpen={drawerOpen} />
       <Grid item container direction="column">
+        <div className={classes.contentOffset} />
         <Grid item>
           <PageHeader drawerOpen={drawerOpen} />
         </Grid>
@@ -38,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   headerDivider: {
     background: "rgba(0, 0, 0, 0.24)",
   },
+  contentOffset: theme.mixins.toolbar,
   pageContent: {
     background: theme.palette.background.hoverGrey,
   },
