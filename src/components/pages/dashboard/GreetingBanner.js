@@ -14,7 +14,12 @@ const GreetingBanner = () => {
         Welcome Mario!
       </Typography>
       <Box className={classes.greetingLink}>
-        <Link className={classes.linkText} variant="h5">
+        <Link
+          className={classes.linkText}
+          variant="h5"
+          href="https://app.vetrinalive.com/gabi?_ga=2.153177656.1663349020.1633860055-33672331.1633860055"
+          target="_blank"
+        >
           app.vetrinalive.it/fenoh-store
         </Link>
         <SvgIcon className={classes.linkIcon}>
@@ -51,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     color: theme.palette.common.white,
     textDecoration: "underline",
-    fontWeight: 500
+    fontWeight: 500,
   },
   linkIcon: {
     marginLeft: "1rem",
