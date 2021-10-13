@@ -59,7 +59,8 @@ export default ExtensionsMarketplace;
 const useStyles = makeStyles((theme) => ({
   carousel: {
     display: "flex",
-    overflow: "hidden",
+    overflowX: "auto",
+    overflowY: "hidden",
   },
   carouselBox: {
     marginRight: "3.125rem",
