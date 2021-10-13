@@ -12,13 +12,13 @@ function MenuItemSubListItem({ subListItem }) {
   const classes = useStyles();
 
   useEffect(() => {
-    setIsActive(location.pathname == `/${subListItem.destination}`);
-  }, [location]);
+    setIsActive(location.pathname === `/${subListItem.destination}`);
+  }, [location, subListItem.destination]);
 
   const subListItemClickHandler = () => {
     history.push(subListItem.destination);
   };
-
+console.log(subListItem.name)
   return (
     <ListItem
       button

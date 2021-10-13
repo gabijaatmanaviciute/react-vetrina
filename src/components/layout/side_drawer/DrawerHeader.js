@@ -4,12 +4,12 @@ import {ReactComponent as MenuIcon} from "assets/icons/menu-icon.svg";
 import mainLogo from "assets/logo/main-logo.svg";
 import { makeStyles } from "@material-ui/core";
 
-function DrawerHeader({changeMenuVisibility}) {
+function DrawerHeader({changeMenuVisibility, isOpen}) {
   const classes = useStyles();
 
   return (
     <div className={classes.drawerHeader}>
-      <img className={classes.mainLogo} alt="Site logo" src={mainLogo} />
+      {isOpen && <a href="/"><img className={classes.mainLogo} alt="Site logo" src={mainLogo} /></a>}
       <IconButton className={classes.menuButton} onClick={changeMenuVisibility}>
         <MenuIcon />
       </IconButton>
@@ -30,17 +30,15 @@ const useStyles = makeStyles(theme => ({
     background: theme.palette.background.default,
     zIndex: 10,
   },
-  mainLogo: {
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
+  // mainLogo: {
+  //   "&:hover": {
+  //     cursor: "pointer",
+  //   },
+  // },
   menuButton: {
     height: "1.5rem",
     width: "1.5rem",
     padding: 0,
-    "&:hover": {
-      background: "transparent",
-    }
+    
   },
 }));

@@ -1,45 +1,47 @@
-import { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
+import DrawerHeader from "./DrawerHeader";
+import ShopSelectDropdown from "./ShopSelectDropdown";
 import List from "@material-ui/core/List";
 import MenuListItem from "./MenuListItem";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
-import DrawerHeader from "./DrawerHeader";
-
 import { mainListItems } from "utils/menu-data";
 import { extraListItems } from "utils/menu-data";
-import { storeList } from "utils/menu-data";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 const drawerWidth = 256;
 
-const SideDrawer = () => {
-  const [showMenu, setShowMenu] = useState(true);
+const SideDrawer = ({menuIconClickHandler, drawerOpen}) => {
   const classes = useStyles();
-
-  const menuIconClickHandler = () => {
-    setShowMenu(!showMenu);
-  };
 
   return (
     <Drawer
       variant="permanent"
       anchor="left"
-      className={classes.drawer}
-      classes={{ paper: classes.drawerPaper }}
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: drawerOpen,
+        [classes.drawerClose]: !drawerOpen,
+      })}
+      classes={{
+        paper: clsx({
+          [classes.drawerOpen]: drawerOpen,
+          [classes.drawerClose]: !drawerOpen,
+        }),
+      }}
     >
-      <DrawerHeader changeMenuVisibility={menuIconClickHandler} />
+      <DrawerHeader changeMenuVisibility={menuIconClickHandler} isOpen={drawerOpen} />
       <List className={classes.menuList}>
         {mainListItems.map((item) => (
-          <MenuListItem item={item} />
+          <MenuListItem item={item} drawerOpen={drawerOpen}/>
         ))}
       </List>
-      <Divider />
-      <List className={clsx(classes.menuList, classes.extraList)}>
+      <Divider className={classes.drawerDivider} />
+      <List className={clsx(classes.menuList, classes.extraList)} >
         {extraListItems.map((item) => (
-          <MenuListItem item={item} />
+          <MenuListItem item={item} drawerOpen={drawerOpen} />
         ))}
       </List>
+      {drawerOpen && <ShopSelectDropdown />}
     </Drawer>
   );
 };
@@ -49,9 +51,26 @@ export default SideDrawer;
 const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
   },
-  drawerPaper: {
+  drawerOpen: {
     width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(8) + 2,
+    },
   },
   menuList: {
     padding: 0,
@@ -59,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: drawerWidth,
   },
   extraList: {
-    marginTop: "1.375rem"
+    marginTop: "1.375rem",
+    marginBottom: 0,
   },
+  drawerDivider: {
+    backgroundColor: "#E5E5E5"
+  }
 }));
