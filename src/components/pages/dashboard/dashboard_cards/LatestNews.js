@@ -7,38 +7,23 @@ import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
 import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon-blue.svg";
 import Spinner from "../../../reusable_components/other/Spinner";
-import axios from "axios";
+import { getNewsArticlesAPI } from "http-requests/http-request-functions";
 
 function LatestNews() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
   const apiKey = "5a200fbc39434849a235997066684175";
+  const url =
+    "https://newsapi.org/v2/everything?q=apple&from=2021-10-12&to=2021-10-12&sortBy=popularity&apiKey=";
 
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(
-          `https://newsapi.org/v2/everything?q=apple&from=2021-10-12&to=2021-10-12&sortBy=popularity&apiKey=${apiKey}`
-        )
-        .then((response) => setData(response.data))
-        .catch((error) => console.log(error));
-      setIsLoading(false);
-    };
-    // try {
-    //   const response = await fetch(
-    //     `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=culture&api-key=uGI6UtJLIshBCwiGrLX24BA7gMdCg75S
-    //     `
-    //   );
-    //   const articles = await response.json();
-    //   console.log(articles);
-    //   setArticles(articles.response.docs);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-    fetchData();
+    getNewsArticlesAPI(url, apiKey).then((response) => setData(response.data));
+    setIsLoading(false);
   }, []);
+
   console.log(data);
+
   return (
     <Grid container>
       <Grid item container className={classes.newsCardHeader}>
