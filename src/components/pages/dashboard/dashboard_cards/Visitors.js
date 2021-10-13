@@ -7,7 +7,7 @@ import CardTitle from "components/reusable_components/panel_card_parts/CardTitle
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
 
-function Visitors() {
+function Visitors({popUpOpenHandler}) {
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ function Visitors() {
           <Typography className={classes.panelContent}>1824</Typography>
         </CardContent>
       </Grid>
-      <Grid item className={classes.panelFooter}>
+      <Grid item className={classes.panelFooter} onClick={popUpOpenHandler}>
         <CardLink
           linkText="Do you want more visits? Contact us!"
           linkIcon={<ArrowForwardRoundedIcon />}

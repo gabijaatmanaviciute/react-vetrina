@@ -1,12 +1,21 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import MainPanel from "./MainPanel";
 import SidePanel from "./SidePanel";
 import GreetingBanner from "./GreetingBanner";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
+import CustomerChatPopUp from "../../layout/customer_support/CustomerChatPopUp";
 
 const Dashboard = () => {
+  const [showPopUp, setShowPopUp] = useState(true);
   const classes = useStyles();
+
+  const popUpOpenHandler = () => {
+    setShowPopUp(true);
+  }
+  const popUpCloseHandler = () => {
+    setShowPopUp(false);
+  }
 
   return (
     <Fragment>
@@ -16,11 +25,12 @@ const Dashboard = () => {
       <Grid item container className={classes.panelMaster}>
         {/* Container for all the smaller panels */}
         <Grid item container direction="column" md={8}>
-          <MainPanel />
+          <MainPanel popUpOpenHandler={popUpOpenHandler} />
         </Grid>
         <Grid item container direction="column" md={4}>
-          <SidePanel />
+          <SidePanel popUpOpenHandler={popUpOpenHandler}/>
         </Grid>
+        {showPopUp && <CustomerChatPopUp popUpCloseHandler={popUpCloseHandler} />}
       </Grid>
     </Fragment>
   );

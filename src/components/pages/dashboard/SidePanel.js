@@ -8,7 +8,7 @@ import ConfigureYourShop from "./dashboard_cards/ConfigureYourShop";
 import TrustPilot from "./dashboard_cards/Trustpilot";
 
 
-const SidePanel = () => {
+const SidePanel = ({popUpOpenHandler}) => {
   const classes = useStyles();
   return (
     <Fragment>
@@ -29,7 +29,7 @@ const SidePanel = () => {
       </Grid>
       <Grid item className={classes.gridItem}>
         <Card className={classes.panelCard}>
-          <CustomerSupport />
+          <CustomerSupport popUpOpenHandler={popUpOpenHandler} />
         </Card>
       </Grid>
     </Fragment>

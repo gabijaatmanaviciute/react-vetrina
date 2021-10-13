@@ -8,14 +8,14 @@ import AppAd from "./dashboard_cards/AppAd";
 import ExtensionsMarketplace from "./dashboard_cards/ExtensionsMarketplace";
 import LatestNews from "./dashboard_cards/LatestNews";
 
-const MainPanel = () => {
+const MainPanel = ({popUpOpenHandler}) => {
   const classes = useStyles();
   return (
     <Fragment>
       <Grid item container className={classes.gridRow1}>
         <Grid item className={classes.gridItem} md={6}>
           <Card className={classes.panelCard}>
-            <Visitors />
+            <Visitors popUpOpenHandler={popUpOpenHandler} />
           </Card>
         </Grid>
         <Grid item className={classes.gridItem} md={6}>
