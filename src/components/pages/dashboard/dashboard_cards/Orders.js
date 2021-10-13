@@ -6,20 +6,18 @@ import { ReactComponent as ListIcon } from "assets/icons/list-icon.svg";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
+import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
 
 function Orders() {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" className={classes.cardContainer}>
       <Grid item className={classes.panelHeader}>
         <CardTitle title="Orders" icon={<ListIcon />} />
-        <div className={classes.dropdown}>
-          <Typography variant="input">This month</Typography>
-          <KeyboardArrowDownIcon />
-        </div>
+        <TimeIntervalDropdown />
       </Grid>
-      <Grid item cotainer className={classes.panelContent}>
+      <Grid item className={classes.panelContent}>
         <Grid item className={classes.orderRow}>
           <Typography variant="h5" className={classes.statLabel}>
             Orders received:
@@ -34,7 +32,10 @@ function Orders() {
         </Grid>
       </Grid>
       <Grid item className={classes.panelFooter}>
-        <CardLink linkText="10 free tips to increase your sales" />
+        <CardLink
+          linkText="10 free tips to increase your sales"
+          href="https://vetrinalive.com/categories/marketing/?_ga=2.90202650.1663349020.1633860055-33672331.1633860055"
+        />
       </Grid>
     </Grid>
   );
@@ -43,6 +44,10 @@ function Orders() {
 export default Orders;
 
 const useStyles = makeStyles((theme) => ({
+  cardContainer: {
+    minHeight: 190,
+    justifyContent: "space-between",
+  },
   panelHeader: {
     display: "flex",
     justifyContent: "space-between",
