@@ -26,6 +26,12 @@ export default createTheme({
   //     disableRipple: true,
   //   },
   // },
+  overrides: {
+    MuiInputLabel: {
+      position: "static",
+      transform: "none",
+    },
+  },
   palette: {
     common: {
       white: `${white}`,
@@ -124,16 +130,18 @@ export default createTheme({
       textTransform: "none",
     },
     input: {
-      fontFamily: "Source Sans Pro",
+      fontFamily: "Noto Sans HK",
       fontWeight: 400,
       fontSize: "0.875rem",
       lineHeight: "1.125rem",
+      color: "rgba(35, 59, 83, 1)",
     },
     label: {
-      fontFamily: "Source Sans Pro",
+      fontFamily: "Noto Sans HK",
       fontWeight: 500,
       fontSize: "0.9375rem",
       lineHeight: "1.25rem",
+      color: "#546679",
     },
     drawerListItemText: {
       fontFamily: "Noto Sans HK",
@@ -146,7 +154,6 @@ export default createTheme({
       fontWeight: 400,
       fontSize: "1.0625rem",
       lineHeight: "1.25rem",
-      color: `${blue}`,
       textDecoration: "underline",
     },
   },
