@@ -4,29 +4,46 @@ import PageHeader from "components/layout/page_header/PageHeader";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import NotificationsDrawer from "./NotificationsDrawer";
 
 function Layout({ children }) {
   const [drawerOpen, setDrawerOpen] = useState(true);
+  const [notifDrawerOpen, setNotifDrawerOpen] = useState(true);
   const classes = useStyles();
 
   const menuIconClickHandler = () => {
-    setDrawerOpen(()=>!drawerOpen);
+    setDrawerOpen(() => !drawerOpen);
   };
+  const notifDrawerOpenHandler = () => {
+    setNotifDrawerOpen(true);
+  };
+  const notifDrawerCloseHandler = () => {
+    setNotifDrawerOpen(false)
+  }
 
   return (
     <div className={classes.layout}>
-
-      <SideDrawer menuIconClickHandler={menuIconClickHandler} drawerOpen={drawerOpen} />
+      <SideDrawer
+        menuIconClickHandler={menuIconClickHandler}
+        drawerOpen={drawerOpen}
+      />
       <Grid item container direction="column">
         <div className={classes.contentOffset} />
         <Grid item>
-          <PageHeader drawerOpen={drawerOpen} />
+          <PageHeader
+            drawerOpen={drawerOpen}
+            notifDrawerOpenHandler={notifDrawerOpenHandler}
+          />
         </Grid>
         <Divider className={classes.headerDivider} />
         <Grid item container className={classes.pageContent}>
           {children}
         </Grid>
       </Grid>
+      <NotificationsDrawer
+        notifDrawerOpen={notifDrawerOpen}
+        notifDrawerCloseHandler={notifDrawerCloseHandler}
+      />
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { openedDrawerWidth } from "utils/global-constants";
 import { closedDrawerWidth } from "utils/global-constants";
 import clsx from "clsx";
 
-const PageHeader = ({ drawerOpen }) => {
+const PageHeader = ({ drawerOpen, notifDrawerOpenHandler }) => {
   const classes = useStyles();
   return (
     <AppBar
@@ -16,11 +16,14 @@ const PageHeader = ({ drawerOpen }) => {
         [classes.drawerClosed]: !drawerOpen,
       })}
     >
-      <Toolbar disableGutters className={classes.toolbar}>
+      <Toolbar disableGutters className={classes.toolbar} notifDrawerOpenHandler={notifDrawerOpenHandler}>
         <Typography className={classes.toolbarTitle} variant="h5">
           Dashboard
         </Typography>
-        <PageHeaderNotification className={classes.headerNotification} />
+        <PageHeaderNotification
+          className={classes.headerNotification}
+          notifDrawerOpenHandler={notifDrawerOpenHandler}
+        />
       </Toolbar>
     </AppBar>
   );
@@ -38,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerClosed: {
     width: `calc(100% - ${closedDrawerWidth}px)`,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }), 
+    }),
   },
   drawerOpened: {
     width: `calc(100% - ${openedDrawerWidth}px)`,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
