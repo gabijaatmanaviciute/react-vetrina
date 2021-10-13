@@ -8,13 +8,15 @@ import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
 function ConfigureYourShop() {
-  const classes = useStyles();
+  const completeness = Math.floor(Math.random() * 100);
+  const classes = useStyles(completeness);
+
   return (
     <Fragment>
       <CardTitle title="Configure your shop" icon={<ToolIcon />} />
-      <CardContent>
+      <CardContent className={classes.cardContent}>
         <Typography variant="h1" className={classes.number}>
-          45%
+          {`${completeness}%`}
         </Typography>
         <Typography variant="h6" className={classes.label}>
           Completed
@@ -29,6 +31,7 @@ function ConfigureYourShop() {
       <CardLink
         linkText="Complete the setup!"
         linkIcon={<ArrowForwardRoundedIcon />}
+        href="https://admin.vetrinalive.com/wizard"
       />
     </Fragment>
   );
@@ -37,15 +40,20 @@ function ConfigureYourShop() {
 export default ConfigureYourShop;
 
 const useStyles = makeStyles((theme) => ({
-  number: {
-    color: theme.palette.common.orange,
-    fontFamily: "Source Sans Pro",
-    fontWeight: 600
+  cardContent: {
+    color: (completeness) => {
+      return completeness < 31
+        ? theme.palette.common.red
+        : completeness < 81
+        ? theme.palette.common.orange
+        : theme.palette.common.green;
+    },
   },
-  label: {
-    color: theme.palette.common.orange,
+  number: {
+    fontFamily: "Source Sans Pro",
+    fontWeight: 600,
   },
   undertext: {
-    fontWeight: 400
-  }
+    fontWeight: 400,
+  },
 }));
