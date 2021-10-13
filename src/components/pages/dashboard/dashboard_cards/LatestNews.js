@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { ReactComponent as FileTextIcon } from "assets/icons/file-text-icon.svg";
 import { makeStyles } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
@@ -8,7 +8,27 @@ import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
 import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon-blue.svg";
 
 function LatestNews() {
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch(
+          `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=culture&api-key=uGI6UtJLIshBCwiGrLX24BA7gMdCg75S
+          `
+        );
+        const articles = await response.json();
+        console.log(articles);
+        setArticles(articles.response.docs);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchArticles();
+  }, []);
 
   return (
     <Grid container>
@@ -25,48 +45,25 @@ function LatestNews() {
         </Grid>
       </Grid>
       <Grid item container className={classes.newsContainer}>
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
-        <NewsItem
-          image=""
-          title="E-commerce"
-          textPrimary="How to earn money online: 7 ideas for you"
-          textSecondary="Estimated reading: 4mins"
-          link="/"
-        />
+        {isLoading ? <div>Loading...</div> : articles.map((article) => {
+          const {
+            web_url,
+            _id,
+            headline: { main },
+            section_name,
+            word_count,
+          } = article;
+          return (
+            <NewsItem
+              key={_id}
+              image=""
+              title={section_name}
+              textPrimary={main}
+              textSecondary={`Word count: ${word_count}`}
+              link={web_url}
+            />
+          );
+        })}
       </Grid>
     </Grid>
   );
