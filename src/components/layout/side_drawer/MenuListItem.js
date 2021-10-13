@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core";
-import {useTheme} from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 import Notification from "../../reusable_components/panel_card_parts/Notification";
 import { ReactComponent as ArrowDownIcon } from "assets/icons/arrow-down-icon.svg";
 import { ReactComponent as ArrowUpIcon } from "assets/icons/arrow-up-icon.svg";
@@ -13,7 +13,7 @@ import { ReactComponent as ArrowUpIcon } from "assets/icons/arrow-up-icon.svg";
 function MenuListItem({ item, drawerOpen }) {
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const theme= useTheme();
+  const theme = useTheme();
   const history = useHistory();
   const location = useLocation();
 
@@ -45,22 +45,33 @@ function MenuListItem({ item, drawerOpen }) {
           } ${isOpen ? classes.openItem : ""}`}
         >
           <ListItemIcon className={classes.listItemIcon}>
-            <img src={require(`assets/icons/${item.icon_title}`).default} alt={item.icon_title}/>
+            <img
+              src={require(`assets/icons/${item.icon_title}`).default}
+              alt={item.icon_title}
+            />
           </ListItemIcon>
-          {drawerOpen && <Fragment>
-            <ListItemText disableTypography className={classes.listItemText}>
-              {item.name}
-            </ListItemText>
-            {item.expandable && !isOpen && (
-              <ArrowDownIcon fill={theme.palette.text.primary} className={classes.arrowIcon} />
-            )}
-            {item.expandable && isOpen && (
-              <ArrowUpIcon fill={theme.palette.primary.main} className={classes.arrowIcon} />
-            )}
-            {item.notifications > 0 && (
-              <Notification value={item.notifications} />
-            )}
-          </Fragment>}
+          {drawerOpen && (
+            <Fragment>
+              <ListItemText disableTypography className={classes.listItemText}>
+                {item.name}
+              </ListItemText>
+              {item.expandable && !isOpen && (
+                <ArrowDownIcon
+                  // fill={theme.palette.text.primary}
+                  className={classes.arrowIcon}
+                />
+              )}
+              {item.expandable && isOpen && (
+                <ArrowUpIcon
+                  fill={theme.palette.primary.main}
+                  className={classes.arrowIcon}
+                />
+              )}
+              {item.notifications > 0 && (
+                <Notification value={item.notifications} />
+              )}
+            </Fragment>
+          )}
         </ListItem>
       </div>
       {isOpen && drawerOpen && <MenuItemSubList sublist={item.sub_list} />}
@@ -89,20 +100,39 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     height: "100%",
     borderRadius: "4px",
+    "& svg": {
+      fill: theme.palette.text.primary,
+
+    },
     "&:hover": {
       color: theme.palette.primary.main,
+      "& svg": {
+        fill: theme.palette.primary.main,
+      },
     },
-    "&:hover svg": {
-      
-      fill: theme.palette.primary.main,
+    "&:hover img": {
+      filter:
+      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
     },
   },
   activeItem: {
     background: "#F7F7F7",
     color: theme.palette.primary.main,
+    "& img": {
+      filter:
+      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
+    },
   },
   openItem: {
     color: theme.palette.primary.main,
+    "& img": {
+      filter:
+      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
+    },
+    "& svg": {
+      fill: theme.palette.primary.main,
+  
+    }
   },
   listItemIcon: {
     marginLeft: "0.8125rem",
@@ -118,6 +148,5 @@ const useStyles = makeStyles((theme) => ({
   },
   arrowIcon: {
     margin: "0 1.25rem",
-    
   },
 }));
