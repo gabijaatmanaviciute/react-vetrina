@@ -4,11 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 
-const PageHeader = () => {
+const PageHeader = ({drawerOpen}) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" className={classes.header}>
+    <AppBar position="static" className={classes.header} drawerOpen={drawerOpen}>
       <Toolbar disableGutters className={classes.toolbar}>
         <Typography className={classes.toolbarTitle} variant="h5">Dashboard</Typography>
         <PageHeaderNotification className={classes.headerNotification} />
@@ -25,11 +25,12 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "none",
     padding: "0 2.3125rem",
     color: theme.palette.text.primary,
-    height: "3.6875rem"
+    height: "3.6875rem",
+  },
+  toolbar: {
+
   },
   toolbarTitle: {
     flex: 1,
-  },
-  headerNotification: {
   },
 }));
