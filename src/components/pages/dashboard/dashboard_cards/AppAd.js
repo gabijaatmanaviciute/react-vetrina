@@ -45,6 +45,9 @@ function AppAd() {
 export default AppAd;
 
 const useStyles = makeStyles((theme) => ({
+  panelContainer: {
+    minHeight: 303,
+  },
   adUpperSection: {
     display: "flex",
     justifyContent: "space-between",
