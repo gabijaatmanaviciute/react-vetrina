@@ -5,20 +5,23 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core";
+import {useTheme} from "@material-ui/core";
+import Notification from "../../reusable_components/panel_card_parts/Notification";
 import { ReactComponent as ArrowDownIcon } from "assets/icons/arrow-down-icon.svg";
 import { ReactComponent as ArrowUpIcon } from "assets/icons/arrow-up-icon.svg";
 
-function MenuListItem({ item }) {
+function MenuListItem({ item, drawerOpen }) {
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const theme= useTheme();
   const history = useHistory();
   const location = useLocation();
 
   const classes = useStyles(isActive);
 
   useEffect(() => {
-    setIsActive(location.pathname == `/${item.destination}`);
-  }, [location]);
+    setIsActive(location.pathname === `/${item.destination}`);
+  }, [location, item.destination]);
 
   const listItemClickHandler = () => {
     if (item.destination !== null) {
@@ -42,20 +45,25 @@ function MenuListItem({ item }) {
           } ${isOpen ? classes.openItem : ""}`}
         >
           <ListItemIcon className={classes.listItemIcon}>
-            <img src={require(`assets/icons/${item.icon_title}`).default} />
+            <img src={require(`assets/icons/${item.icon_title}`).default} alt={item.icon_title}/>
           </ListItemIcon>
-          <ListItemText disableTypography className={classes.listItemText}>
-            {item.name}
-          </ListItemText>
-          {item.expandable && !isOpen && (
-            <ArrowDownIcon className={classes.arrowIcon} />
-          )}
-          {item.expandable && isOpen && (
-            <ArrowUpIcon className={classes.arrowIcon} />
-          )}
+          {drawerOpen && <Fragment>
+            <ListItemText disableTypography className={classes.listItemText}>
+              {item.name}
+            </ListItemText>
+            {item.expandable && !isOpen && (
+              <ArrowDownIcon fill={theme.palette.text.primary} className={classes.arrowIcon} />
+            )}
+            {item.expandable && isOpen && (
+              <ArrowUpIcon fill={theme.palette.primary.main} className={classes.arrowIcon} />
+            )}
+            {item.notifications > 0 && (
+              <Notification value={item.notifications} />
+            )}
+          </Fragment>}
         </ListItem>
       </div>
-      {isOpen && <MenuItemSubList sublist={item.sub_list} />}
+      {isOpen && drawerOpen && <MenuItemSubList sublist={item.sub_list} />}
     </Fragment>
   );
 }
@@ -84,6 +92,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: theme.palette.primary.main,
     },
+    "&:hover svg": {
+      
+      fill: theme.palette.primary.main,
+    },
   },
   activeItem: {
     background: "#F7F7F7",
@@ -106,5 +118,6 @@ const useStyles = makeStyles((theme) => ({
   },
   arrowIcon: {
     margin: "0 1.25rem",
+    
   },
 }));
