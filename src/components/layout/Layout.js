@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import SideDrawer from "components/layout/side_drawer/SideDrawer";
 import PageHeader from "components/layout/page_header/PageHeader";
 import Divider from "@material-ui/core/Divider";
@@ -6,14 +6,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 function Layout({ children }) {
+  const [drawerOpen, setDrawerOpen] = useState(true);
   const classes = useStyles();
+
+  const menuIconClickHandler = () => {
+    setDrawerOpen(()=>!drawerOpen);
+  };
 
   return (
     <div className={classes.layout}>
-      <SideDrawer />
+      <SideDrawer menuIconClickHandler={menuIconClickHandler} drawerOpen={drawerOpen}/>
       <Grid item container direction="column">
         <Grid item>
-          <PageHeader />
+          <PageHeader drawerOpen={drawerOpen} />
         </Grid>
         <Divider className={classes.headerDivider} />
         <Grid item container className={classes.pageContent}>
