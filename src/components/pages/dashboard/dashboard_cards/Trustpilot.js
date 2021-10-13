@@ -1,12 +1,14 @@
 import React from "react";
 import TrustPilotLogo from "assets/logo/trustpilot-logo.svg";
 import CardContent from "components/reusable_components/panel_card_parts/CardContent";
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, useTheme, Typography } from "@material-ui/core";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 
 function Trustpilot() {
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
     <div>
       <img src={TrustPilotLogo} alt="Trustpilot logo" />
@@ -21,6 +23,8 @@ function Trustpilot() {
       <CardLink
         linkText="Write a review on Trustpilot"
         linkIcon={<ArrowForwardRoundedIcon />}
+        linkColor={theme.palette.common.green}
+        href="https://www.trustpilot.com/evaluate/vetrinalive.it"
       />
     </div>
   );
