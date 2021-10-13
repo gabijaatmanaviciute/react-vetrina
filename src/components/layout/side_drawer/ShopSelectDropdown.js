@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         border: "1px solid rgba(10, 37, 64, 0.24)",
         borderRadius: "5px",
         ...theme.typography.input,
+        background: "transparent",
         "&:focus": {
             outline: "none",
             border: `1px solid ${theme.palette.primary.main}`

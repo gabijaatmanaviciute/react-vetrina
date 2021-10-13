@@ -22,23 +22,26 @@ function ExtensionsMarketplace() {
               <img alt="Globe" src={Globe} />
             </Box>
             <Typography className={classes.carouselItemText}>
-              Connect your own domain{" "}
+              Connect your own domain
             </Typography>
           </Box>
           <Box className={clsx(classes.carouselBox, classes.box2)}>
             <Box className={clsx(classes.image2, classes.carouselImage)}>
               <Typography className={classes.boxUpperText}>
-                +50 Prodotti
+                +50 Products
               </Typography>
             </Box>
             <Typography className={classes.carouselItemText}>
-              50 Additional Products{" "}
+              50 Additional Products
             </Typography>
           </Box>
-          <Box className={clsx(classes.carouselBox, classes.box2)}>
+          <Box className={clsx(classes.carouselBox, classes.box3)}>
             <Box className={clsx(classes.image3, classes.carouselImage)}>
-              <Typography className={classes.carouselItemText}></Typography>
+              <Typography className={classes.carouselItemText}>+10 Products</Typography>
             </Box>
+            <Typography className={classes.carouselItemText}>
+              10 Additional Products
+            </Typography>
           </Box>
         </Box>
       </CardContent>
@@ -74,6 +77,10 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.common.orange,
   },
   image2: {
+    background: theme.palette.common.green,
+    color: theme.palette.common.white,
+  },
+  image3: {
     background: theme.palette.common.green,
     color: theme.palette.common.white,
   },
