@@ -2,18 +2,24 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 
 function NewsItem({ image, title, textPrimary, textSecondary, link }) {
   const classes = useStyles();
 
   return (
     <Box className={classes.newsItemBox}>
-      <Box className={classes.newsImage}></Box>
+      {/* <Box className={classes.newsImage}></Box> */}
+      <Box className={classes.newsImageBox}>
+        <img src={image} className={classes.newsImage} />
+      </Box>
       <Box className={classes.newsTextSection}>
         <Typography className={classes.newsTitle}>{title}</Typography>
-        <Typography className={classes.newsPrimaryText}>
-          {textPrimary}
-        </Typography>
+        <Link href={link} target="_blank">
+          <Typography className={classes.newsPrimaryText}>
+            {textPrimary}
+          </Typography>
+        </Link>
         <Typography className={classes.newsSecondaryText} component="a">
           {textSecondary}
         </Typography>
@@ -30,11 +36,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2rem",
     width: "50%",
   },
-  newsImage: {
+  newsImageBox: {
     minWidth: "6.25rem",
+    maxWidth: "6.25rem",
     height: "6.25rem",
-    background: theme.palette.common.green,
+    display: "flex",
+    justifyContent: "center",
+    overflow: "hidden",
     marginRight: "1rem",
+
+  },
+  newsImage: {
+    background: theme.palette.common.green,
   },
   newsTextSection: {
     marginRight: "1.125rem",
@@ -52,12 +65,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: "0.9375rem",
     lineHeight: "1.25rem",
+    color: theme.palette.text.primary,
   },
   newsSecondaryText: {
-      fontWeight: 300,
-      fontSize: "0.75rem",
-      lineHeight: "0.75rem",
-      textDecoration: "underline",
-      margin: "0.5625rem 0 0.5rem",
-  }
+    fontWeight: 300,
+    fontSize: "0.75rem",
+    lineHeight: "0.75rem",
+    textDecoration: "underline",
+    margin: "0.5625rem 0 0.5rem",
+  },
 }));

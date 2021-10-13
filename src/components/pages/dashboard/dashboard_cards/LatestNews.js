@@ -6,30 +6,39 @@ import CardTitle from "components/reusable_components/panel_card_parts/CardTitle
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
 import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon-blue.svg";
+import Spinner from "../../../reusable_components/other/Spinner";
+import axios from "axios";
 
 function LatestNews() {
-  const [articles, setArticles] = useState([]);
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
+  const apiKey = "5a200fbc39434849a235997066684175";
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch(
-          `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=culture&api-key=uGI6UtJLIshBCwiGrLX24BA7gMdCg75S
-          `
-        );
-        const articles = await response.json();
-        console.log(articles);
-        setArticles(articles.response.docs);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
+    const fetchData = () => {
+      axios
+        .get(
+          `https://newsapi.org/v2/everything?q=apple&from=2021-10-12&to=2021-10-12&sortBy=popularity&apiKey=${apiKey}`
+        )
+        .then((response) => setData(response.data))
+        .catch((error) => console.log(error));
+      setIsLoading(false);
     };
-    fetchArticles();
+    // try {
+    //   const response = await fetch(
+    //     `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=culture&api-key=uGI6UtJLIshBCwiGrLX24BA7gMdCg75S
+    //     `
+    //   );
+    //   const articles = await response.json();
+    //   console.log(articles);
+    //   setArticles(articles.response.docs);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    fetchData();
   }, []);
-
+  console.log(data);
   return (
     <Grid container>
       <Grid item container className={classes.newsCardHeader}>
@@ -45,25 +54,27 @@ function LatestNews() {
         </Grid>
       </Grid>
       <Grid item container className={classes.newsContainer}>
-        {isLoading ? <div>Loading...</div> : articles.map((article) => {
-          const {
-            web_url,
-            _id,
-            headline: { main },
-            section_name,
-            word_count,
-          } = article;
-          return (
-            <NewsItem
-              key={_id}
-              image=""
-              title={section_name}
-              textPrimary={main}
-              textSecondary={`Word count: ${word_count}`}
-              link={web_url}
-            />
-          );
-        })}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          data &&
+          data.articles.map((item, index) => {
+            const { url, urlToImage, author, title, publishedAt } = item;
+            if (index > 7) {
+              return;
+            }
+            return (
+              <NewsItem
+                key={url}
+                image={urlToImage}
+                title={author}
+                textPrimary={title}
+                textSecondary={`Published at: ${publishedAt}`}
+                link={url}
+              />
+            );
+          })
+        )}
       </Grid>
     </Grid>
   );
