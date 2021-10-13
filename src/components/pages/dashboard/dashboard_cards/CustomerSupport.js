@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from  "components/reusable_components/panel_card_parts/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core";
-import AvatarPicture from "assets/customer_support.jpg";
+import AvatarPicture from "assets/customer_support.png";
 
 function CustomerSupport() {
   const classes = useStyles();
@@ -17,7 +17,7 @@ function CustomerSupport() {
         <Avatar className={classes.avatar} src={AvatarPicture}/>
         <CardContent>
           <Typography variant="bodySmall">
-            Simone is here to help you.
+            Marina is here to help you.
           </Typography>
         </CardContent>
       </div>
