@@ -1,19 +1,21 @@
-import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core";
-import { Typography } from "@material-ui/core";
+import Link from "@material-ui/core/Link";
+import { useTheme } from "@material-ui/styles";
 
-function CardLink({ linkText, linkIcon }) {
-  const classes = useStyles();
+function CardLink({ linkText, linkIcon, linkColor, href }) {
+  const theme = useTheme();
+  
+  const color = {
+    color: linkColor ? linkColor : theme.palette.primary.main
+  }
+
+  const classes = useStyles(color);
   return (
     <div className={classes.cardLink}>
-      <div className={classes.linkText}>
-        <Typography>{linkText}</Typography>
-      </div>
-      {linkIcon && (
-        <div className={`${classes.linkIcon} ${classes.iconType}`}>
-          {linkIcon}
-        </div>
-      )}
+      <Link href={href} target="_blank" className={classes.linkText}>
+        {linkText}
+      </Link>
+      {linkIcon && <div className={classes.linkIcon}>{linkIcon}</div>}
     </div>
   );
 }
@@ -23,27 +25,21 @@ export default CardLink;
 const useStyles = makeStyles((theme) => ({
   cardLink: {
     "&:hover": {
-      cursor: "pointer"
+      cursor: "pointer",
     },
     display: "flex",
-    "& .white": {
-      color: theme.palette.common.white
-    },
-    "& .green": {
-      color: theme.palette.common.green
-    }
+    alignItems: "top",
   },
   linkText: {
-    "& .MuiTypography-body1": {
-      ...theme.typography.panelLinks,
-    },
+    ...theme.typography.panelLinks,
+    color: (color) => color.color,
+    marginRight: "0.75rem",
   },
   linkIcon: {
     "& .MuiSvgIcon-root": {
-      color: theme.typography.panelLinks.color,
+      color: (color) => color.color,
       width: "1.25rem",
       height: "1.25rem",
-      marginLeft: "0.75rem",
     },
   },
 }));
