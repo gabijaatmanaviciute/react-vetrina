@@ -3,31 +3,36 @@ import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { CardContent, makeStyles } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
 import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
 
-function Visitors({popUpOpenHandler}) {
+function Visitors({ popUpOpenHandler }) {
   const classes = useStyles();
 
+  const visitors = Math.floor(Math.random() * 3000);
+
   return (
-    <Grid container direction="column" className={classes.cardContainer}>
-      <Grid item className={classes.panelHeader}>
-        <CardTitle title="Visitors" icon={<EyeIcon />} />
-        <TimeIntervalDropdown />
+    <Card>
+      <Grid container direction="column" className={classes.cardContainer}>
+        <Grid item className={classes.panelHeader}>
+          <CardTitle title="Visitors" icon={<EyeIcon />} />
+          <TimeIntervalDropdown />
+        </Grid>
+        <Grid item>
+          <CardContent>
+            <Typography className={classes.panelContent}>{visitors}</Typography>
+          </CardContent>
+        </Grid>
+        <Grid item className={classes.panelFooter} onClick={popUpOpenHandler}>
+          <CardLink
+            linkText="Do you want more visits? Contact us!"
+            linkIcon={<ArrowForwardRoundedIcon />}
+          />
+        </Grid>
       </Grid>
-      <Grid item>
-        <CardContent>
-          <Typography className={classes.panelContent}>1824</Typography>
-        </CardContent>
-      </Grid>
-      <Grid item className={classes.panelFooter} onClick={popUpOpenHandler}>
-        <CardLink
-          linkText="Do you want more visits? Contact us!"
-          linkIcon={<ArrowForwardRoundedIcon />}
-        />
-      </Grid>
-    </Grid>
+    </Card>
   );
 }
 

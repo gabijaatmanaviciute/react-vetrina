@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { ReactComponent as ListIcon } from "assets/icons/list-icon.svg";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
@@ -11,6 +10,7 @@ import TimeIntervalDropdown from "components/reusable_components/panel_card_part
 function Orders() {
   const classes = useStyles();
 
+  const orders = Math.floor(Math.random()*1000);
   return (
     <Grid container direction="column" className={classes.cardContainer}>
       <Grid item className={classes.panelHeader}>
@@ -22,7 +22,7 @@ function Orders() {
           <Typography variant="h5" className={classes.statLabel}>
             Orders received:
           </Typography>
-          <Typography variant="h5">156</Typography>
+          <Typography variant="h5">{orders}</Typography>
         </Grid>
         <Grid item className={classes.orderRow}>
           <Typography variant="h5" className={classes.statLabel}>
