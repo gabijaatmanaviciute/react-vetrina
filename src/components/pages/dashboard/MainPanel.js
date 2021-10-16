@@ -14,30 +14,28 @@ const MainPanel = ({popUpOpenHandler}) => {
     <Fragment>
       <Grid item container className={classes.gridRow1}>
         <Grid item className={classes.gridItem} md={6}>
-          <Card className={classes.panelCard}>
             <Visitors popUpOpenHandler={popUpOpenHandler} />
-          </Card>
         </Grid>
         <Grid item className={classes.gridItem} md={6}>
-          <Card className={classes.panelCard}>
+          <Card>
             <Orders />
           </Card>
         </Grid>
       </Grid>
       <Grid item container className={classes.gridRow2}>
         <Grid item className={classes.gridItem} md={6}>
-          <Card className={classes.panelCard} id="app_ad">
+          <Card id="app_ad">
             <AppAd />
           </Card>
         </Grid>
         <Grid item className={classes.gridItem} md={6}>
-          <Card className={classes.panelCard}>
+          <Card>
             <ExtensionsMarketplace />
           </Card>
         </Grid>
       </Grid>
       <Grid item className={classes.gridItem}>
-        <Card className={classes.panelCard}>
+        <Card>
           <LatestNews />
         </Card>
       </Grid>
@@ -53,10 +51,6 @@ const useStyles = makeStyles((theme) => ({
     "& #app_ad": {
       background: "#F3A35C",
     },
-  },
-  panelCard: {
-    minHeight: "220px",
-    ...theme.panelCard,
   },
   panelIcon: {
     width: "1.25rem",
