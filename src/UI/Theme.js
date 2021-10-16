@@ -14,12 +14,7 @@ const lightGrey = "#E5E5E5";
 const hoverGrey = "#F7F7F7";
 
 export default createTheme({
-  panelCard: {
-    boxShadow:
-      "0px 4px 8px 0px rgba(50, 50, 71, 0.06),0px 4px 4px 0px rgba(50, 50, 71, 0.08)",
-    borderRadius: "10px",
-    padding: "1.5rem",
-  },
+  
   // props: {
   //   // Name of the component
   //   MuiButtonBase: {
@@ -27,9 +22,13 @@ export default createTheme({
   //   },
   // },
   overrides: {
-    MuiInputLabel: {
-      position: "static",
-      transform: "none",
+    MuiCard: {
+      root: {
+        boxShadow:
+          "0px 4px 8px 0px rgba(50, 50, 71, 0.06),0px 4px 4px 0px rgba(50, 50, 71, 0.08)",
+        borderRadius: "10px",
+        padding: "1.5rem",
+      },
     },
   },
   palette: {
