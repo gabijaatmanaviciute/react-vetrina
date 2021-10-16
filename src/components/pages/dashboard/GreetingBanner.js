@@ -11,7 +11,7 @@ const GreetingBanner = () => {
   return (
     <Box className={classes.greetingBanner}>
       <Typography className={classes.greetingText} variant="h1">
-        Welcome Mario!
+        Welcome Gabija !
       </Typography>
       <Box className={classes.greetingLink}>
         <Link

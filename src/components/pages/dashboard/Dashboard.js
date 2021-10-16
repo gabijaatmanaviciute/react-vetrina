@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core";
 import CustomerChatPopUp from "../../layout/customer_support/CustomerChatPopUp";
 
 const Dashboard = () => {
-  const [showPopUp, setShowPopUp] = useState(true);
+  const [showPopUp, setShowPopUp] = useState(false);
   const classes = useStyles();
 
   const popUpOpenHandler = () => {

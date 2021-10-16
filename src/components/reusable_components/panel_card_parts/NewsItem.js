@@ -11,7 +11,7 @@ function NewsItem({ image, title, textPrimary, textSecondary, link }) {
     <Box className={classes.newsItemBox}>
       {/* <Box className={classes.newsImage}></Box> */}
       <Box className={classes.newsImageBox}>
-        <img src={image} className={classes.newsImage} />
+        <img src={image} className={classes.newsImage} alt="News Article" />
       </Box>
       <Box className={classes.newsTextSection}>
         <Typography className={classes.newsTitle}>{title}</Typography>

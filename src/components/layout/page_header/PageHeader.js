@@ -16,7 +16,7 @@ const PageHeader = ({ drawerOpen, notifDrawerOpenHandler }) => {
         [classes.drawerClosed]: !drawerOpen,
       })}
     >
-      <Toolbar disableGutters className={classes.toolbar} notifDrawerOpenHandler={notifDrawerOpenHandler}>
+      <Toolbar disableGutters className={classes.toolbar}>
         <Typography className={classes.toolbarTitle} variant="h5">
           Dashboard
         </Typography>

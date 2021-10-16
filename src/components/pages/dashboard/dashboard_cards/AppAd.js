@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { useTheme } from "@material-ui/core";
 import { Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
@@ -11,7 +10,6 @@ import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 
 function AppAd() {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Grid container className={classes.panelContainer}>

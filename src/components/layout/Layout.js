@@ -8,7 +8,7 @@ import NotificationsDrawer from "./NotificationsDrawer";
 
 function Layout({ children }) {
   const [drawerOpen, setDrawerOpen] = useState(true);
-  const [notifDrawerOpen, setNotifDrawerOpen] = useState(true);
+  const [notifDrawerOpen, setNotifDrawerOpen] = useState(false);
   const classes = useStyles();
 
   const menuIconClickHandler = () => {

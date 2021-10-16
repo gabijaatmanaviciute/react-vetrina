@@ -7,9 +7,10 @@ const HeaderNotification = ({ notifDrawerOpenHandler }) => {
   const classes = useSyles();
 
   return (
-    <Typography button
+    <Typography
       className={classes.HeaderNotification}
       onClick={notifDrawerOpenHandler}
+      component="h6"
     >
       <Badge
         badgeContent={2}
@@ -17,7 +18,7 @@ const HeaderNotification = ({ notifDrawerOpenHandler }) => {
         className={classes.notificationBadge}
       >
         <img src={zapIcon} alt="Zap Icon" className={classes.zapIcon} />
-        <Typography variant="h6" className={classes.notificationText}>
+        <Typography variant="h6" component="p" className={classes.notificationText}>
           What's new
         </Typography>
       </Badge>

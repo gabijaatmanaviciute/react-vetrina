@@ -32,13 +32,13 @@ const SideDrawer = ({menuIconClickHandler, drawerOpen}) => {
       <DrawerHeader changeMenuVisibility={menuIconClickHandler} isOpen={drawerOpen} />
       <List className={classes.menuList}>
         {mainListItems.map((item) => (
-          <MenuListItem item={item} drawerOpen={drawerOpen}/>
+          <MenuListItem item={item} key={item.name} drawerOpen={drawerOpen}/>
         ))}
       </List>
       <Divider className={classes.drawerDivider} />
       <List className={clsx(classes.menuList, classes.extraList)} >
         {extraListItems.map((item) => (
-          <MenuListItem item={item} drawerOpen={drawerOpen} />
+          <MenuListItem item={item} key={item.name} drawerOpen={drawerOpen} />
         ))}
       </List>
       {drawerOpen && <ShopSelectDropdown />}

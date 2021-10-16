@@ -22,7 +22,7 @@ function LatestNews() {
     setIsLoading(false);
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Grid container>

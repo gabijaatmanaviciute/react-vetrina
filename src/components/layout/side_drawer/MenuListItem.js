@@ -6,7 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
-import Notification from "../../reusable_components/panel_card_parts/Notification";
+import Notification from "../../reusable_components/other/Notification";
 import { ReactComponent as ArrowDownIcon } from "assets/icons/arrow-down-icon.svg";
 import { ReactComponent as ArrowUpIcon } from "assets/icons/arrow-up-icon.svg";
 
@@ -39,7 +39,6 @@ function MenuListItem({ item, drawerOpen }) {
         <ListItem
           button
           onClick={listItemClickHandler}
-          key={item.name}
           className={`${classes.menuListItem} ${
             isActive ? classes.activeItem : ""
           } ${isOpen ? classes.openItem : ""}`}

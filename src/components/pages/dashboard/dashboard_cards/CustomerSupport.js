@@ -3,7 +3,7 @@ import CardTitle from "components/reusable_components/panel_card_parts/CardTitle
 import { ReactComponent as HeadphonesIcon } from "assets/icons/headphones-icon.svg";
 import CardContent from "components/reusable_components/panel_card_parts/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Button from  "components/reusable_components/panel_card_parts/Button";
+import Button from  "components/reusable_components/other/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core";
 import AvatarPicture from "assets/customer_support.png";
