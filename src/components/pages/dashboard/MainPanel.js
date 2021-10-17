@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core";
 import Visitors from "./dashboard_cards/Visitors";
 import Orders from "./dashboard_cards/Orders";
