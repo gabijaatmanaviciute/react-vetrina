@@ -40,7 +40,6 @@ export default ShopSelectDropdown;
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    position: "static",
     padding: "4.0625rem 1.5rem 1.5rem 1rem",
   },
   select: {

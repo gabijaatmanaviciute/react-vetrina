@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import PanelCard from "../../../reusable_components/panel_card_parts/PanelCard";
 import { makeStyles } from "@material-ui/core";
@@ -8,14 +8,25 @@ import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
 
 function Orders() {
+  const [selectedPeriod, setSelectedPeriod] = useState("This month");
   const classes = useStyles();
 
+  const selectedPeriodChangeHandler = (event) => {
+    setSelectedPeriod(event.target.value);
+  };
+
   const orders = Math.floor(Math.random() * 1000);
+
   return (
     <PanelCard
       cardIcon={<ListIcon />}
       cardTitle="Orders"
-      cardHeaderSideElement={<TimeIntervalDropdown />}
+      cardHeaderSideElement={
+        <TimeIntervalDropdown
+          selectedPeriod={selectedPeriod}
+          selectedPeriodChangeHandler={selectedPeriodChangeHandler}
+        />
+      }
       cardFooterElement={
         <CardLink
           linkText="10 free tips to increase your sales"
@@ -43,7 +54,7 @@ function Orders() {
 
 export default Orders;
 
-const useStyles = makeStyles((theme) => ({  
+const useStyles = makeStyles((theme) => ({
   orderRow: {
     display: "flex",
     justifyContent: "space-between",
