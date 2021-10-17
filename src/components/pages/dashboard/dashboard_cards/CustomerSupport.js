@@ -7,7 +7,7 @@ import Button from  "components/reusable_components/other/Button";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core";
-import AvatarPicture from "assets/customer_support.png";
+import AvatarPicture from "assets/customer_support.jpg";
 
 function CustomerSupport({popUpOpenHandler}) {
   const classes = useStyles();
@@ -18,7 +18,7 @@ function CustomerSupport({popUpOpenHandler}) {
         <Avatar className={classes.avatar} src={AvatarPicture}/>
         <CardContent>
           <Typography variant="bodySmall">
-            Marina is here to help you.
+            Roberto is here to help you.
           </Typography>
         </CardContent>
       </div>

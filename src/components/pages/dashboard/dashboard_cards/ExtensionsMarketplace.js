@@ -1,16 +1,39 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { ReactComponent as NewAppIcon } from "assets/icons/new-app-icon.svg";
 import PanelCard from "../../../reusable_components/panel_card_parts/PanelCard";
+import CarouselCard from "../../../reusable_components/panel_card_parts/CarouselCard";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core";
-import Globe from "assets/globe_medium.svg";
-import clsx from "clsx";
+import axios from "axios";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
 
 function ExtensionsMarketplace() {
+  const [extensions, setExtensions] = useState("");
   const classes = useStyles();
+
+  const key = "DmfUYu2V28I90av_meseyUaMnkRmsn_7rBZKlki6qfk";
+  const url = `https://api.unsplash.com/search/photos?page=1&per_page=4&query=smartphone&client_id=${key}`;
+
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      // console.log(response.data.results);
+      setExtensions(response.data.results);
+    });
+  }, []);
+
+  // const settings = {
+  //   infinite: false,
+  //   adaptiveHeight: true,
+  //   arrows: false,
+  //   autoplay: true,
+  //   slidesToShow: 2,
+  //   slidesToScroll: 1,
+  // };
+
   return (
     <PanelCard
       cardIcon={<NewAppIcon />}
@@ -24,34 +47,15 @@ function ExtensionsMarketplace() {
       }
     >
       <Box className={classes.carousel}>
-        <Box className={clsx(classes.carouselBox, classes.box1)}>
-          <Box className={clsx(classes.image1, classes.carouselImage)}>
-            <img alt="Globe" src={Globe} />
-          </Box>
-          <Typography className={classes.carouselItemText}>
-            Connect your own domain
-          </Typography>
-        </Box>
-        <Box className={clsx(classes.carouselBox, classes.box2)}>
-          <Box className={clsx(classes.image2, classes.carouselImage)}>
-            <Typography className={classes.boxUpperText}>
-              +50 Products
-            </Typography>
-          </Box>
-          <Typography className={classes.carouselItemText}>
-            50 Additional Products
-          </Typography>
-        </Box>
-        <Box className={clsx(classes.carouselBox, classes.box3)}>
-          <Box className={clsx(classes.image3, classes.carouselImage)}>
-            <Typography className={classes.carouselItemText}>
-              +10 Products
-            </Typography>
-          </Box>
-          <Typography className={classes.carouselItemText}>
-            10 Additional Products
-          </Typography>
-        </Box>
+        {/* <Slider {...settings}> */}
+          {extensions &&
+            extensions.map((item) => (
+              <CarouselCard
+                undertext={item.alt_description}
+                imageLink={item.urls.small}
+              />
+            ))}
+        {/* </Slider> */}
       </Box>
     </PanelCard>
   );
@@ -64,34 +68,5 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflowX: "auto",
     overflowY: "hidden",
-  },
-  carouselBox: {
-    marginRight: "3.125rem",
-  },
-  carouselImage: {
-    borderRadius: "10px",
-    width: "9.5rem",
-    height: "9.375rem",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: "0.75rem",
-  },
-  image1: {
-    background: theme.palette.common.orange,
-  },
-  image2: {
-    background: theme.palette.common.green,
-    color: theme.palette.common.white,
-  },
-  image3: {
-    background: theme.palette.common.green,
-    color: theme.palette.common.white,
-  },
-  carouselItemText: {
-    fontFamily: "Source Sans Pro",
-    fontWeight: 400,
-    fontSize: "1.0625rem",
-    lineHeight: "1.25rem",
   },
 }));
