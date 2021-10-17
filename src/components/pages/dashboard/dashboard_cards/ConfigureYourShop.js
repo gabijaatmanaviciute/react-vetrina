@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     color: (completeness) => {
       return completeness < 31
         ? theme.palette.common.red
-        : completeness < 81
+        : completeness < 71
         ? theme.palette.common.orange
         : theme.palette.common.green;
     },
