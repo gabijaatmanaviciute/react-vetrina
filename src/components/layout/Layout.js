@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import NotificationsDrawer from "./NotificationsDrawer";
 
 function Layout({ children }) {
+  const [currentPageTitle, setCurrentPageTitle] = useState("Dashboard");
   const [drawerOpen, setDrawerOpen] = useState(true);
   const [notifDrawerOpen, setNotifDrawerOpen] = useState(false);
   const classes = useStyles();
@@ -18,12 +19,16 @@ function Layout({ children }) {
     setNotifDrawerOpen(true);
   };
   const notifDrawerCloseHandler = () => {
-    setNotifDrawerOpen(false)
-  }
+    setNotifDrawerOpen(false);
+  };
+  const currentPageTitleHandler = (title) => {
+    setCurrentPageTitle(title);
+  };
 
   return (
     <div className={classes.layout}>
       <SideDrawer
+        currentPageTitleHandler={currentPageTitleHandler}
         menuIconClickHandler={menuIconClickHandler}
         drawerOpen={drawerOpen}
       />
@@ -31,6 +36,7 @@ function Layout({ children }) {
         <div className={classes.contentOffset} />
         <Grid item>
           <PageHeader
+            currentPageTitle={currentPageTitle}
             drawerOpen={drawerOpen}
             notifDrawerOpenHandler={notifDrawerOpenHandler}
           />

@@ -10,7 +10,7 @@ import Notification from "../../reusable_components/other/Notification";
 import { ReactComponent as ArrowDownIcon } from "assets/icons/arrow-down-icon.svg";
 import { ReactComponent as ArrowUpIcon } from "assets/icons/arrow-up-icon.svg";
 
-function MenuListItem({ item, drawerOpen }) {
+function MenuListItem({ item, drawerOpen, currentPageTitleHandler }) {
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
@@ -26,6 +26,7 @@ function MenuListItem({ item, drawerOpen }) {
   const listItemClickHandler = () => {
     if (item.destination !== null) {
       history.push(item.destination);
+      currentPageTitleHandler(item.name);
     }
     if (item.expandable) {
       setIsOpen(() => !isOpen);
@@ -73,7 +74,12 @@ function MenuListItem({ item, drawerOpen }) {
           )}
         </ListItem>
       </div>
-      {isOpen && drawerOpen && <MenuItemSubList sublist={item.sub_list} />}
+      {isOpen && drawerOpen && (
+        <MenuItemSubList
+          sublist={item.sub_list}
+          currentPageTitleHandler={currentPageTitleHandler}
+        />
+      )}
     </Fragment>
   );
 }
@@ -101,7 +107,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     "& svg": {
       fill: theme.palette.text.primary,
-
     },
     "&:hover": {
       color: theme.palette.primary.main,
@@ -111,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "&:hover img": {
       filter:
-      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
+        "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
     },
   },
   activeItem: {
@@ -119,19 +124,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     "& img": {
       filter:
-      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
+        "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
     },
   },
   openItem: {
     color: theme.palette.primary.main,
     "& img": {
       filter:
-      "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
+        "invert(65%) sepia(92%) saturate(2538%) hue-rotate(165deg) brightness(99%) contrast(97%)",
     },
     "& svg": {
       fill: theme.palette.primary.main,
-  
-    }
+    },
   },
   listItemIcon: {
     marginLeft: "0.8125rem",

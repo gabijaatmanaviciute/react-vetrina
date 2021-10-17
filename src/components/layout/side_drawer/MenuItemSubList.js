@@ -2,8 +2,7 @@ import MenuItemSubListItem from "./MenuItemSubListItem";
 import List from "@material-ui/core/List";
 import { makeStyles } from "@material-ui/core";
 
-function MenuItemSubList({ sublist }) {
-
+function MenuItemSubList({ sublist, currentPageTitleHandler }) {
   const classes = useStyles();
 
   console.log(sublist);
@@ -11,7 +10,10 @@ function MenuItemSubList({ sublist }) {
     <List className={classes.subList}>
       {sublist &&
         sublist.map((item) => (
-          <MenuItemSubListItem subListItem={item} />
+          <MenuItemSubListItem
+            subListItem={item}
+            currentPageTitleHandler={currentPageTitleHandler}
+          />
         ))}
     </List>
   );

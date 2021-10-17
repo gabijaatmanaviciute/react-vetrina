@@ -4,7 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core";
 
-function MenuItemSubListItem({ subListItem }) {
+function MenuItemSubListItem({ subListItem, currentPageTitleHandler }) {
   const [isActive, setIsActive] = useState(false);
 
   const history = useHistory();
@@ -17,7 +17,9 @@ function MenuItemSubListItem({ subListItem }) {
 
   const subListItemClickHandler = () => {
     history.push(subListItem.destination);
+    currentPageTitleHandler(subListItem.name);
   };
+  
 console.log(subListItem.name)
   return (
     <ListItem

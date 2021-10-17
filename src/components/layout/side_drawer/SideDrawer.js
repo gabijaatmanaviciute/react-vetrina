@@ -7,11 +7,15 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { mainListItems } from "utils/menu-data";
 import { extraListItems } from "utils/menu-data";
-import clsx from "clsx";
 import { openedDrawerWidth } from "utils/global-constants";
 import { closedDrawerWidth } from "utils/global-constants";
+import clsx from "clsx";
 
-const SideDrawer = ({menuIconClickHandler, drawerOpen}) => {
+const SideDrawer = ({
+  currentPageTitleHandler,
+  menuIconClickHandler,
+  drawerOpen,
+}) => {
   const classes = useStyles();
 
   return (
@@ -29,16 +33,29 @@ const SideDrawer = ({menuIconClickHandler, drawerOpen}) => {
         }),
       }}
     >
-      <DrawerHeader changeMenuVisibility={menuIconClickHandler} isOpen={drawerOpen} />
+      <DrawerHeader
+        changeMenuVisibility={menuIconClickHandler}
+        isOpen={drawerOpen}
+      />
       <List className={classes.menuList}>
         {mainListItems.map((item) => (
-          <MenuListItem item={item} key={item.name} drawerOpen={drawerOpen}/>
+          <MenuListItem
+            item={item}
+            key={item.name}
+            drawerOpen={drawerOpen}
+            currentPageTitleHandler={currentPageTitleHandler}
+          />
         ))}
       </List>
       <Divider className={classes.drawerDivider} />
-      <List className={clsx(classes.menuList, classes.extraList)} >
+      <List className={clsx(classes.menuList, classes.extraList)}>
         {extraListItems.map((item) => (
-          <MenuListItem item={item} key={item.name} drawerOpen={drawerOpen} />
+          <MenuListItem
+            item={item}
+            key={item.name}
+            drawerOpen={drawerOpen}
+            currentPageTitleHandler={currentPageTitleHandler}
+          />
         ))}
       </List>
       {drawerOpen && <ShopSelectDropdown />}
@@ -52,23 +69,23 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: openedDrawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
   },
   drawerOpen: {
     width: openedDrawerWidth,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   drawerClose: {
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }), 
-    overflowX: 'hidden',
+    }),
+    overflowX: "hidden",
     width: closedDrawerWidth,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: theme.spacing(8) + 2,
     },
   },
@@ -82,6 +99,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
   },
   drawerDivider: {
-    backgroundColor: "#E5E5E5"
-  }
+    backgroundColor: "#E5E5E5",
+  },
 }));

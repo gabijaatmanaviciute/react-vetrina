@@ -7,7 +7,7 @@ import { openedDrawerWidth } from "utils/global-constants";
 import { closedDrawerWidth } from "utils/global-constants";
 import clsx from "clsx";
 
-const PageHeader = ({ drawerOpen, notifDrawerOpenHandler }) => {
+const PageHeader = ({ currentPageTitle, drawerOpen, notifDrawerOpenHandler }) => {
   const classes = useStyles();
   return (
     <AppBar
@@ -18,7 +18,7 @@ const PageHeader = ({ drawerOpen, notifDrawerOpenHandler }) => {
     >
       <Toolbar disableGutters className={classes.toolbar}>
         <Typography className={classes.toolbarTitle} variant="h5">
-          Dashboard
+          {currentPageTitle}
         </Typography>
         <PageHeaderNotification
           className={classes.headerNotification}
