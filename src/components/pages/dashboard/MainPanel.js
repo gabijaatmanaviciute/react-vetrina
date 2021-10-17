@@ -8,36 +8,28 @@ import AppAd from "./dashboard_cards/AppAd";
 import ExtensionsMarketplace from "./dashboard_cards/ExtensionsMarketplace";
 import LatestNews from "./dashboard_cards/LatestNews";
 
-const MainPanel = ({popUpOpenHandler}) => {
+const MainPanel = ({ popUpOpenHandler }) => {
   const classes = useStyles();
   return (
     <Fragment>
-      <Grid item container className={classes.gridRow1}>
+      <Grid item container>
         <Grid item className={classes.gridItem} md={6}>
-            <Visitors popUpOpenHandler={popUpOpenHandler} />
+          <Visitors popUpOpenHandler={popUpOpenHandler} />
         </Grid>
         <Grid item className={classes.gridItem} md={6}>
-          <Card>
-            <Orders />
-          </Card>
+          <Orders />
         </Grid>
       </Grid>
-      <Grid item container className={classes.gridRow2}>
+      <Grid item container>
         <Grid item className={classes.gridItem} md={6}>
-          <Card id="app_ad">
-            <AppAd />
-          </Card>
+          <AppAd />
         </Grid>
         <Grid item className={classes.gridItem} md={6}>
-          <Card>
-            <ExtensionsMarketplace />
-          </Card>
+          <ExtensionsMarketplace />
         </Grid>
       </Grid>
       <Grid item className={classes.gridItem}>
-        <Card>
-          <LatestNews />
-        </Card>
+        <LatestNews />
       </Grid>
     </Fragment>
   );
@@ -48,12 +40,5 @@ export default MainPanel;
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     padding: "0.75rem",
-    "& #app_ad": {
-      background: "#F3A35C",
-    },
-  },
-  panelIcon: {
-    width: "1.25rem",
-    height: "1.25rem",
   },
 }));

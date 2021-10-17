@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import Link from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/styles";
 
-function CardLink({ linkText, linkIcon, linkColor, href }) {
+function CardLink({ linkText, linkIcon, linkColor, href, onClick }) {
   const theme = useTheme();
   
   const color = {
@@ -11,7 +11,7 @@ function CardLink({ linkText, linkIcon, linkColor, href }) {
 
   const classes = useStyles(color);
   return (
-    <div className={classes.cardLink}>
+    <div className={classes.cardLink} onClick={onClick}>
       <Link href={href} target="_blank" className={classes.linkText}>
         {linkText}
       </Link>

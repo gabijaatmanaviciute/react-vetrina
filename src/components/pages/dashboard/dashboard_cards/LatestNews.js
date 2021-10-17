@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ReactComponent as FileTextIcon } from "assets/icons/file-text-icon.svg";
 import { makeStyles } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Grid, Card } from "@material-ui/core";
 import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
@@ -25,43 +25,45 @@ function LatestNews() {
   // console.log(data);
 
   return (
-    <Grid container>
-      <Grid item container className={classes.newsCardHeader}>
-        <Grid item>
-          <CardTitle title="Latest news" icon={<FileTextIcon />} />
+    <Card>
+      <Grid container>
+        <Grid item container className={classes.newsCardHeader}>
+          <Grid item>
+            <CardTitle title="Latest news" icon={<FileTextIcon />} />
+          </Grid>
+          <Grid item>
+            <CardLink
+              linkText="Visit our blog"
+              linkIcon={<ExternalLinkIcon />}
+              href="https://vetrinalive.com/blog?_ga=2.89335323.1663349020.1633860055-33672331.1633860055"
+            />
+          </Grid>
         </Grid>
-        <Grid item>
-          <CardLink
-            linkText="Visit our blog"
-            linkIcon={<ExternalLinkIcon />}
-            href="https://vetrinalive.com/blog?_ga=2.89335323.1663349020.1633860055-33672331.1633860055"
-          />
+        <Grid item container className={classes.newsContainer}>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            data &&
+            data.articles.map((item, index) => {
+              const { url, urlToImage, author, title, publishedAt } = item;
+              if (index > 7) {
+                return;
+              }
+              return (
+                <NewsItem
+                  key={url}
+                  image={urlToImage}
+                  title={author}
+                  textPrimary={title}
+                  textSecondary={`Published at: ${publishedAt}`}
+                  link={url}
+                />
+              );
+            })
+          )}
         </Grid>
       </Grid>
-      <Grid item container className={classes.newsContainer}>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          data &&
-          data.articles.map((item, index) => {
-            const { url, urlToImage, author, title, publishedAt } = item;
-            if (index > 7) {
-              return;
-            }
-            return (
-              <NewsItem
-                key={url}
-                image={urlToImage}
-                title={author}
-                textPrimary={title}
-                textSecondary={`Published at: ${publishedAt}`}
-                link={url}
-              />
-            );
-          })
-        )}
-      </Grid>
-    </Grid>
+    </Card>
   );
 }
 

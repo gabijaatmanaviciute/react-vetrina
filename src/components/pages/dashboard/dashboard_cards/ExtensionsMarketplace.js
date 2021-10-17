@@ -1,7 +1,6 @@
 import React from "react";
 import { ReactComponent as NewAppIcon } from "assets/icons/new-app-icon.svg";
-import CardContent from "components/reusable_components/panel_card_parts/CardContent";
-import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
+import PanelCard from "../../../reusable_components/panel_card_parts/PanelCard";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import Typography from "@material-ui/core/Typography";
@@ -13,44 +12,48 @@ import clsx from "clsx";
 function ExtensionsMarketplace() {
   const classes = useStyles();
   return (
-    <div>
-      <CardTitle title="Extensions Marketplace" icon={<NewAppIcon />} />
-      <CardContent>
-        <Box className={classes.carousel}>
-          <Box className={clsx(classes.carouselBox, classes.box1)}>
-            <Box className={clsx(classes.image1, classes.carouselImage)}>
-              <img alt="Globe" src={Globe} />
-            </Box>
-            <Typography className={classes.carouselItemText}>
-              Connect your own domain
-            </Typography>
+    <PanelCard
+      cardIcon={<NewAppIcon />}
+      cardTitle="Extensions Marketplace"
+      cardFooterElement={
+        <CardLink
+          linkText="Discover all extensions"
+          linkIcon={<ArrowForwardRoundedIcon />}
+          href="https://admin.vetrinalive.com/extensions"
+        />
+      }
+    >
+      <Box className={classes.carousel}>
+        <Box className={clsx(classes.carouselBox, classes.box1)}>
+          <Box className={clsx(classes.image1, classes.carouselImage)}>
+            <img alt="Globe" src={Globe} />
           </Box>
-          <Box className={clsx(classes.carouselBox, classes.box2)}>
-            <Box className={clsx(classes.image2, classes.carouselImage)}>
-              <Typography className={classes.boxUpperText}>
-                +50 Products
-              </Typography>
-            </Box>
-            <Typography className={classes.carouselItemText}>
-              50 Additional Products
-            </Typography>
-          </Box>
-          <Box className={clsx(classes.carouselBox, classes.box3)}>
-            <Box className={clsx(classes.image3, classes.carouselImage)}>
-              <Typography className={classes.carouselItemText}>+10 Products</Typography>
-            </Box>
-            <Typography className={classes.carouselItemText}>
-              10 Additional Products
-            </Typography>
-          </Box>
+          <Typography className={classes.carouselItemText}>
+            Connect your own domain
+          </Typography>
         </Box>
-      </CardContent>
-      <CardLink
-        linkText="Discover all extensions"
-        linkIcon={<ArrowForwardRoundedIcon />}
-        href="https://admin.vetrinalive.com/extensions"
-      />
-    </div>
+        <Box className={clsx(classes.carouselBox, classes.box2)}>
+          <Box className={clsx(classes.image2, classes.carouselImage)}>
+            <Typography className={classes.boxUpperText}>
+              +50 Products
+            </Typography>
+          </Box>
+          <Typography className={classes.carouselItemText}>
+            50 Additional Products
+          </Typography>
+        </Box>
+        <Box className={clsx(classes.carouselBox, classes.box3)}>
+          <Box className={clsx(classes.image3, classes.carouselImage)}>
+            <Typography className={classes.carouselItemText}>
+              +10 Products
+            </Typography>
+          </Box>
+          <Typography className={classes.carouselItemText}>
+            10 Additional Products
+          </Typography>
+        </Box>
+      </Box>
+    </PanelCard>
   );
 }
 

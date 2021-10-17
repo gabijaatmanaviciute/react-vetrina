@@ -1,44 +1,46 @@
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardTitle from "./CardTitle";
+import CardContent from "./CardContent";
+import Box from "@material-ui/core/Box";
 
 function PanelCard({
   cardIcon,
   cardTitle,
   cardHeaderSideElement,
   cardFooterElement,
-  children
+  children,
 }) {
   const classes = useStyles();
 
-  return <Card>
-      <Grid container direction="column" className={classes.cardContainer}>
-        <Grid item className={classes.panelHeader}>
+  return (
+    <Card>
+      <Box className={classes.cardContainer}>
+        <Box className={classes.panelHeader}>
           <CardTitle icon={cardIcon} title={cardTitle} />
-          {cardHeaderSideElement || <div />}
-        </Grid>
-        <Grid item>
-          <CardContent>
-            {children}
-          </CardContent>
-        </Grid>
-        <Grid item className={classes.panelFooter} onClick={popUpOpenHandler}>
+          {cardHeaderSideElement}
+        </Box>
+        <CardContent>{children}</CardContent>
+        <Box className={classes.panelFooter}>
           {cardFooterElement}
-        </Grid>
-      </Grid>
-  </Card>;
+        </Box>
+      </Box>
+    </Card>
+  );
 }
 
 export default PanelCard;
 
 const useStyles = makeStyles((theme) => ({
-    cardContainer: {
-        minHeight: 190,
-        justifyContent: "space-between",
-      },
-      panelHeader: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      },
+  cardContainer: {
+    minHeight: 190,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  panelHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 }));

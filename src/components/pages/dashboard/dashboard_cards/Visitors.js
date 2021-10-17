@@ -1,10 +1,8 @@
 import { ReactComponent as EyeIcon } from "assets/icons/eye-icon.svg";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { CardContent, makeStyles } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardTitle from "components/reusable_components/panel_card_parts/CardTitle";
+import { makeStyles } from "@material-ui/core";
+import PanelCard from "components/reusable_components/panel_card_parts/PanelCard";
 import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import TimeIntervalDropdown from "components/reusable_components/panel_card_parts/TimeIntervalDropdown";
 
@@ -14,40 +12,26 @@ function Visitors({ popUpOpenHandler }) {
   const visitors = Math.floor(Math.random() * 3000);
 
   return (
-    <Card>
-      <Grid container direction="column" className={classes.cardContainer}>
-        <Grid item className={classes.panelHeader}>
-          <CardTitle title="Visitors" icon={<EyeIcon />} />
-          <TimeIntervalDropdown />
-        </Grid>
-        <Grid item>
-          <CardContent>
-            <Typography className={classes.panelContent}>{visitors}</Typography>
-          </CardContent>
-        </Grid>
-        <Grid item className={classes.panelFooter} onClick={popUpOpenHandler}>
-          <CardLink
-            linkText="Do you want more visits? Contact us!"
-            linkIcon={<ArrowForwardRoundedIcon />}
-          />
-        </Grid>
-      </Grid>
-    </Card>
+    <PanelCard
+      cardTitle="Visitors"
+      cardIcon={<EyeIcon />}
+      cardHeaderSideElement={<TimeIntervalDropdown />}
+      cardFooterElement={
+        <CardLink
+          linkText="Do you want more visits? Contact us!"
+          linkIcon={<ArrowForwardRoundedIcon />}
+          onClick={popUpOpenHandler}
+        />
+      }
+    >
+      <Typography className={classes.panelContent}>{visitors}</Typography>
+    </PanelCard>
   );
 }
 
 export default Visitors;
 
 const useStyles = makeStyles((theme) => ({
-  cardContainer: {
-    minHeight: 190,
-    justifyContent: "space-between",
-  },
-  panelHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
   panelContent: {
     display: "flex",
     alignItems: "center",

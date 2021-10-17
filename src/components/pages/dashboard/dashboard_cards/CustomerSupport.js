@@ -5,13 +5,14 @@ import CardContent from "components/reusable_components/panel_card_parts/CardCon
 import Typography from "@material-ui/core/Typography";
 import Button from  "components/reusable_components/other/Button";
 import Avatar from "@material-ui/core/Avatar";
+import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core";
 import AvatarPicture from "assets/customer_support.png";
 
 function CustomerSupport({popUpOpenHandler}) {
   const classes = useStyles();
   return (
-    <div>
+    <Card>
       <CardTitle title="Customer support" icon={<HeadphonesIcon />} />
       <div className={classes.supportContent}>
         <Avatar className={classes.avatar} src={AvatarPicture}/>
@@ -22,7 +23,7 @@ function CustomerSupport({popUpOpenHandler}) {
         </CardContent>
       </div>
       <Button text="Contact us" onClick={popUpOpenHandler} />
-    </div>
+    </Card>
   );
 }
 
