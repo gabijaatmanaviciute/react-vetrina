@@ -7,22 +7,28 @@ import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
 import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon-blue.svg";
 import Spinner from "../../../reusable_components/other/Spinner";
-import { getNewsArticlesAPI } from "http-requests/http-request-functions";
+import { getNewsArticles } from "http-requests/http-request-functions";
 
 function LatestNews() {
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const classes = useStyles();
-  const apiKey = "5a200fbc39434849a235997066684175";
-  const url =
-    "https://newsapi.org/v2/everything?q=apple&from=2021-10-12&to=2021-10-12&sortBy=popularity&apiKey=";
 
   useEffect(() => {
-    getNewsArticlesAPI(url, apiKey).then((response) => setData(response.data));
-    setIsLoading(false);
+    setIsLoading(true);
+    setError(false);
+    getNewsArticles()
+      .then((response) => {
+        setData(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setIsLoading(false);
+        setError(true);
+      });
   }, []);
-
-  // console.log(data);
 
   return (
     <Card>
@@ -40,15 +46,11 @@ function LatestNews() {
           </Grid>
         </Grid>
         <Grid item container className={classes.newsContainer}>
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            data &&
-            data.articles.map((item, index) => {
+          {isLoading && <Spinner />}
+          {error && <div>Could not load resources.</div>}
+          {data &&
+            data.articles.map((item) => {
               const { url, urlToImage, author, title, publishedAt } = item;
-              if (index > 7) {
-                return;
-              }
               return (
                 <NewsItem
                   key={url}
@@ -59,8 +61,7 @@ function LatestNews() {
                   link={url}
                 />
               );
-            })
-          )}
+            })}
         </Grid>
       </Grid>
     </Card>

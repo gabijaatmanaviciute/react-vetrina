@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
 import CustomerSupport from "./dashboard_cards/CustomerSupport";
@@ -26,7 +26,7 @@ const SidePanel = ({ popUpOpenHandler }) => {
   );
 };
 
-export default SidePanel;
+export default React.memo(SidePanel);
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {

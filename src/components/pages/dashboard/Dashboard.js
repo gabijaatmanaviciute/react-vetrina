@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState, useCallback } from "react";
 import MainPanel from "./MainPanel";
 import SidePanel from "./SidePanel";
 import GreetingBanner from "./GreetingBanner";
@@ -10,12 +10,13 @@ const Dashboard = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const classes = useStyles();
 
-  const popUpOpenHandler = () => {
+  const popUpOpenHandler = useCallback(() => {
     setShowPopUp(true);
-  }
-  const popUpCloseHandler = () => {
+  }, []);
+
+  const popUpCloseHandler = useCallback(() => {
     setShowPopUp(false);
-  }
+  }, []);
 
   return (
     <Fragment>
@@ -28,9 +29,11 @@ const Dashboard = () => {
           <MainPanel popUpOpenHandler={popUpOpenHandler} />
         </Grid>
         <Grid item container direction="column" md={4}>
-          <SidePanel popUpOpenHandler={popUpOpenHandler}/>
+          <SidePanel popUpOpenHandler={popUpOpenHandler} />
         </Grid>
-        {showPopUp && <CustomerChatPopUp popUpCloseHandler={popUpCloseHandler} />}
+        {showPopUp && (
+          <CustomerChatPopUp popUpCloseHandler={popUpCloseHandler} />
+        )}
       </Grid>
     </Fragment>
   );

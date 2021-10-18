@@ -6,23 +6,31 @@ import CardLink from "components/reusable_components/panel_card_parts/CardLink";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core";
-import axios from "axios";
+import Spinner from "../../../reusable_components/other/Spinner";
+import { getImages } from "http-requests/http-request-functions";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
 
 function ExtensionsMarketplace() {
   const [extensions, setExtensions] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const classes = useStyles();
 
-  const key = "DmfUYu2V28I90av_meseyUaMnkRmsn_7rBZKlki6qfk";
-  const url = `https://api.unsplash.com/search/photos?page=1&per_page=4&query=smartphone&client_id=${key}`;
-
   useEffect(() => {
-    axios.get(url).then((response) => {
-      // console.log(response.data.results);
-      setExtensions(response.data.results);
-    });
+    setIsLoading(true);
+    setError(false);
+    getImages()
+      .then((response) => {
+        setExtensions(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+        setError(true);
+      });
   }, []);
 
   // const settings = {
@@ -46,17 +54,22 @@ function ExtensionsMarketplace() {
         />
       }
     >
-      <Box className={classes.carousel}>
-        {/* <Slider {...settings}> */}
-          {extensions &&
-            extensions.map((item) => (
-              <CarouselCard
-                undertext={item.alt_description}
-                imageLink={item.urls.small}
-              />
-            ))}
-        {/* </Slider> */}
-      </Box>
+      {isLoading && <Spinner />}
+      {extensions && (
+        <Box className={classes.carousel}>
+          {/* <Slider {...settings}> */}
+          {isLoading && <Spinner />}
+          {error && <div>Could not load resources.</div>}
+          {extensions.map((item) => (
+            <CarouselCard
+              key={item.urls.small}
+              undertext={item.alt_description}
+              imageLink={item.urls.small}
+            />
+          ))}
+          {/* </Slider> */}
+        </Box>
+      )}
     </PanelCard>
   );
 }
@@ -68,5 +81,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflowX: "auto",
     overflowY: "hidden",
+    minHeight: 202,
   },
 }));

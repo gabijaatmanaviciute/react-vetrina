@@ -59,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "0.9375rem",
     color: theme.palette.primary.main,
     textTransform: "uppercase",
-    margin: "0.625rem 0 0.5rem",
+    marginBottom: "0.5rem",
+    // margin: "0.625rem 0 0.5rem",
   },
   newsPrimaryText: {
     fontWeight: 500,
