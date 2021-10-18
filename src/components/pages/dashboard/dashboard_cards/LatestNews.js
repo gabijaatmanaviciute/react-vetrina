@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ReactComponent as FileTextIcon } from "assets/icons/file-text-icon.svg";
 import { makeStyles } from "@material-ui/core";
 import { Grid, Card } from "@material-ui/core";
@@ -8,27 +8,16 @@ import NewsItem from "components/reusable_components/panel_card_parts/NewsItem";
 import { ReactComponent as ExternalLinkIcon } from "assets/icons/external-link-icon-blue.svg";
 import Spinner from "../../../reusable_components/other/Spinner";
 import { getNewsArticles } from "http-requests/http-request-functions";
+import { useHttp } from "hooks/use-http";
 
 function LatestNews() {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
   const classes = useStyles();
 
+  const { isLoading, error, sendRequest, data: articles } = useHttp(getNewsArticles);
+
   useEffect(() => {
-    setIsLoading(true);
-    setError(false);
-    getNewsArticles()
-      .then((response) => {
-        setData(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error.message);
-        setIsLoading(false);
-        setError(true);
-      });
-  }, []);
+    sendRequest();
+  }, [sendRequest]);
 
   return (
     <Card>
@@ -48,8 +37,8 @@ function LatestNews() {
         <Grid item container className={classes.newsContainer}>
           {isLoading && <Spinner />}
           {error && <div>Could not load resources.</div>}
-          {data &&
-            data.articles.map((item) => {
+          {articles &&
+            articles.map((item) => {
               const { url, urlToImage, author, title, publishedAt } = item;
               return (
                 <NewsItem

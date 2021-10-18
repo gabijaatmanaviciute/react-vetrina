@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ReactComponent as NewAppIcon } from "assets/icons/new-app-icon.svg";
 import PanelCard from "../../../reusable_components/panel_card_parts/PanelCard";
 import CarouselCard from "../../../reusable_components/panel_card_parts/CarouselCard";
@@ -8,30 +8,19 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core";
 import Spinner from "../../../reusable_components/other/Spinner";
 import { getImages } from "http-requests/http-request-functions";
+import { useHttp } from "hooks/use-http";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
 
 function ExtensionsMarketplace() {
-  const [extensions, setExtensions] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
   const classes = useStyles();
 
+  const { isLoading, error, sendRequest, data: extensions } = useHttp(getImages);
+
   useEffect(() => {
-    setIsLoading(true);
-    setError(false);
-    getImages()
-      .then((response) => {
-        setExtensions(response);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-        setError(true);
-      });
-  }, []);
+    sendRequest();
+  }, [sendRequest]);
 
   // const settings = {
   //   infinite: false,
