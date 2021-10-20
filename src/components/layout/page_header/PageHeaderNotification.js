@@ -13,7 +13,7 @@ const HeaderNotification = ({ notifDrawerOpenHandler }) => {
       component="h6"
     >
       <Badge
-        badgeContent={2}
+        badgeContent={8}
         color="secondary"
         className={classes.notificationBadge}
       >

@@ -16,6 +16,7 @@ function Orders() {
   };
 
   const orders = Math.floor(Math.random() * 1000);
+  const earnings = (Math.random() * 10000).toFixed(2);
 
   return (
     <PanelCard
@@ -45,7 +46,7 @@ function Orders() {
           <Typography variant="h5" className={classes.statLabel}>
             Earnings:
           </Typography>
-          <Typography variant="h5">€ 1893,24</Typography>
+          <Typography variant="h5">{`€ ${earnings}`}</Typography>
         </Grid>
       </Grid>
     </PanelCard>

@@ -46,7 +46,7 @@ function LatestNews() {
                   image={urlToImage}
                   title={author}
                   textPrimary={title}
-                  textSecondary={`Published at: ${publishedAt}`}
+                  textSecondary={`Published at: ${publishedAt.slice(0, 10)}`}
                   link={url}
                 />
               );
