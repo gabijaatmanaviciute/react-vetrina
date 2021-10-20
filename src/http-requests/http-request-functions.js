@@ -11,7 +11,7 @@ export const httpRequest = async (requestConfig) => {
 };
 
 // UNSPLASH API:
-const UNSPLASH_API_KEY = "DmfUYu2V28I90av_meseyUaMnkRmsn_7rBZKlki6qfk";
+const UNSPLASH_API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
 const unsplashAPIConfig = {
       method: "get",
       url: "https://api.unsplash.com/search/photos",
@@ -34,7 +34,7 @@ export const getImages = async () => {
 };
 
 // NEWS API:
-const NEWS_API_KEY = "5a200fbc39434849a235997066684175";
+const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
 const newsAPIConfig = {
   method: "get",
   url: "https://newsapi.org/v2/everything",
@@ -51,7 +51,7 @@ const newsAPIConfig = {
 export const getNewsArticles = async () => {
   try {
     const response = await httpRequest(newsAPIConfig);
-    // console.log("axios response ", response);
+    console.log("axios response ", response);
     return response.data.articles;
   } catch (error) {
     console.error(error.message);
